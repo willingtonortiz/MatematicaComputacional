@@ -1,17 +1,17 @@
 <div class="contenedor">
 	<div class="nombre">
 		<h2 class="candado"><i class="fas fa-lock"></i></h2>
-		<h2>Cuenta de {{cuenta.tipo}}</h2>
-		<button class="botonToggle" (click)="cifrarAlgo()">Abrir</button>
+		<h2 id="descr-cuenta">Cuenta de {{cuenta.tipo}}</h2>
+		<button class="botonToggle" (click)="cifrarAlgo()"></button>
 	</div>
 	<div class=" contenido" [hidden]="escondido">
 		<div class="fila">
 			<h2>Usuario / Correo</h2>
-			<h2 class="usuario">{{cuenta.usuario}}</h2>
+			<h2 class="usuario encript-data">{{cuenta.usuario}}</h2>
 		</div>
 		<div class="fila">
 			<h2>Contraseña / PIN</h2>
-			<h2 class="contrasenia">{{cuenta.contrasenia}}</h2>
+			<h2 class="contrasenia encript-data">{{cuenta.contrasenia}}</h2>
 		</div>
 	</div>
 </div>

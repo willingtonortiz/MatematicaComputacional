@@ -5,9 +5,12 @@
 	height: 100%;
 
 	.titulo {
+		margin-top: 50px;
 		h2 {
 			font-size: 1rem;
 			color: #DDDDDE;
+			font-family: 'Lato', sans-serif;
+			
 		}
 	}
 
@@ -23,3 +26,19 @@
 		}
 	}
 }
+	/*
+		======== ======== ANDROID DEVICE ======== ========
+	*/
+
+	@media only screen and (min-width:360px){
+		.titulo{
+			margin: 50px auto 10px;
+			padding: 5px 0;
+			border-bottom: 1px solid #DDDDDE;
+			width: 80%;
+			text-align: left;
+		}
+
+
+
+	}

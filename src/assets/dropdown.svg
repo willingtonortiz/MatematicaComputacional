@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14.226 8.784">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <path id="dropdown" class="cls-1" d="M18.554,8.59l-5.441,5.429L7.672,8.59,6,10.262l7.113,7.113,7.113-7.113Z" transform="translate(-6 -8.59)"/>
+</svg>

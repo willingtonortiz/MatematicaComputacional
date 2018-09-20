@@ -1,7 +1,8 @@
 .contenedor {
-	background-color: #4F5363;
+	background-color: rgba(255, 255, 255, .02);
 	display: flex;
 	flex-flow: column nowrap;
+	align-content: center;
 	padding: 1rem;
 	border-radius: 1rem;
 
@@ -9,12 +10,35 @@
 		display: inherit;
 		flex-flow: row nowrap;
 		justify-content: space-between;
-		margin-bottom: 1rem;
+		align-items: center;
+
+		// margin-bottom: 1rem;
+		.candado {
+			color: #5DF1B1;
+		}
 
 		h2 {
 			font-size: 1rem;
-			color: #DDDDDE;
+			color: #FFFFFF;
+			// font-family: 'Open Sans', sans-serif;
+			font-family: 'Raleway', sans-serif;
+			font-weight: 500;
+
 		}
+		#descr-cuenta{
+			font-size: 20px;
+		}
+
+		.botonToggle {
+			width: 30px;
+			height: 20px;
+			background: url('../../../assets/dropdown.svg');
+			background-position: center center;
+			background-size: cover;
+			border: none;
+			transform-origin: center center;
+		}
+
 	}
 
 	.contenido {
@@ -26,10 +50,21 @@
 			flex-flow: row nowrap;
 			justify-content: space-between;
 			align-items: center;
+			width: 80%;
+			margin:  0 auto;
 
 			h2 {
 				font-size: .8rem;
 				color: #DDDDDE;
+				font-family: 'Montserrat', sans-serif;
+				font-weight: 300;
+				line-height: 1.9;
+				text-align: left;
+
+			}
+			.encript-data{
+				color: #5DF1B1;
+				text-shadow: 0 0 2px  #5DF1B1;
 			}
 		}
 	}
@@ -37,6 +72,35 @@
 	.contenido[hidden] {
 		display: none;
 	}
+
+
+}
+
+/*
+		======== ======== ANDROID DEVICE ======== ========
+	*/
+
+@media only screen and (min-width:360px) {
+	.contenedor {
+		.nombre {
+			#descr-cuenta{
+				font-size: 13px;
+			}
+			.botonToggle {
+				width: 15px;
+				height: 10px;
+				background: url('../../../assets/dropdown.svg');
+				background-position: center center;
+				background-size: cover;
+				border: none;
+				transform-origin: center center;
+			}
+		}
+		.contenido{
+			margin-top: 20px;
+		}
+	}
+
 
 
 }
