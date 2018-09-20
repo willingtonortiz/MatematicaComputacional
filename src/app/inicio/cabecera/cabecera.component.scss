@@ -1,0 +1,19 @@
+// fondo: 4B4F60
+// letras: 5DF1B1
+// fondoClaro: 5F647A
+.contenedor {
+	background-color: #484F60;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: center;
+	align-items: center;
+
+	h1 {
+		color: #5DF1B1;
+		font-size: 2.5rem;
+		margin-bottom: 4rem;
+	}
+
+}

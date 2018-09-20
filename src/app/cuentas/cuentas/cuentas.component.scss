@@ -1,0 +1,25 @@
+.contenedor {
+	display: flex;
+	flex-flow: column nowrap;
+	align-items: center;
+	height: 100%;
+
+	.titulo {
+		h2 {
+			font-size: 1rem;
+			color: #DDDDDE;
+		}
+	}
+
+	.cuentas {
+		display: flex;
+		flex-flow: column nowrap;
+		justify-content: flex-start;
+		width: 80%;
+		overflow-y: scroll;
+
+		app-cuenta {
+			margin-bottom: 1rem;
+		}
+	}
+}

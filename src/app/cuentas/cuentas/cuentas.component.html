@@ -1,0 +1,9 @@
+<div class="contenedor">
+	<div class="titulo">
+		<h2>Mis Cuentas</h2>
+	</div>
+	<div class="cuentas">
+		<app-cuenta *ngFor="let cuenta of cuentas"
+		[cuenta]="cuenta"></app-cuenta>
+	</div>
+</div>

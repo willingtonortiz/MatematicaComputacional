@@ -1,0 +1,42 @@
+.contenedor {
+	background-color: #4F5363;
+	display: flex;
+	flex-flow: column nowrap;
+	padding: 1rem;
+	border-radius: 1rem;
+
+	.nombre {
+		display: inherit;
+		flex-flow: row nowrap;
+		justify-content: space-between;
+		margin-bottom: 1rem;
+
+		h2 {
+			font-size: 1rem;
+			color: #DDDDDE;
+		}
+	}
+
+	.contenido {
+		display: inherit;
+		flex-flow: column nowrap;
+
+		.fila {
+			display: inherit;
+			flex-flow: row nowrap;
+			justify-content: space-between;
+			align-items: center;
+
+			h2 {
+				font-size: .8rem;
+				color: #DDDDDE;
+			}
+		}
+	}
+
+	.contenido[hidden] {
+		display: none;
+	}
+
+
+}
