@@ -10,10 +10,10 @@ import { CCuenta } from '../../Clases/Cuenta/CCuenta';
 export class CuentasComponent implements OnInit {
 
 	public cuentas: Array<CCuenta> = [
-		new CCuenta('FACEBOOK', 'USUARIOA', 'CONTRAA'),
-		new CCuenta('SPOTIFY', 'USUARIOB', 'CONTRAB'),
-		new CCuenta('TWITTER', 'USUARIOC', 'CONTRAC'),
-		new CCuenta('SEGURIDAD', 'USUARIOD', 'CONTRAD'),
+		new CCuenta('Facebook', 'USUARIOA', 'CONTRAA'),
+		new CCuenta('Spotify', 'USUARIOB', 'CONTRAB'),
+		new CCuenta('Twitter', 'USUARIOC', 'CONTRAC'),
+		new CCuenta('Seguridad', 'USUARIOD', 'CONTRAD'),
 		new CCuenta('UPC', 'USUARIOE', 'CONTRAE'),
 		new CCuenta('UPC', 'USUARIOF', 'CONTRAF'),
 		new CCuenta('UPC', 'USUARIOG', 'CONTRAH')
