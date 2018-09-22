@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { CuentasRoutingModule } from "./cuentas-routing.module";
 import { CuentaComponent } from './cuenta/cuenta.component';
 import { CuentasComponent } from './cuentas/cuentas.component';
+import { AgregarCuentaComponent } from './agregar-cuenta/agregar-cuenta.component';
 
 /* COMPONENTES */
 
@@ -16,7 +17,9 @@ import { CuentasComponent } from './cuentas/cuentas.component';
 
     CuentaComponent,
 
-    CuentasComponent]
+    CuentasComponent,
+
+    AgregarCuentaComponent]
 })
 
 export class CuentasModule { }

@@ -2,11 +2,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CuentasComponent } from './cuentas/cuentas.component';
+import { AgregarCuentaComponent } from './agregar-cuenta/agregar-cuenta.component';
 
 /* COMPONENTES */
 
 const routes: Routes = [
-    { path: '', component: CuentasComponent, }
+    { path: '', redirectTo: 'inicio', pathMatch: 'full', },
+    { path: 'inicio', component: CuentasComponent, },
+    { path: 'agregar', component: AgregarCuentaComponent, },
 ];
 
 @NgModule({

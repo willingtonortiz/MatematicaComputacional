@@ -1,0 +1,75 @@
+.contenedor {
+	height: 100%;
+	width: 100%;
+	display: grid;
+	justify-content: center;
+	align-content: center;
+
+	.formulario {
+		border: 1px solid red;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+		color: #eee;
+
+		.titulo,
+		.labelTipo,
+		.inputTipo,
+		.labelDescripcion,
+		.inputDescripcion,
+		.labelUsuario,
+		.inputUsuario,
+		.labelContrasenia,
+		.inputContrasenia,
+		.botonAceptar {
+			border: 1px solid red;
+		}
+
+		.titulo {
+			grid-area: titulo;
+		}
+
+		.labelTipo {
+			grid-area: labelTipo;
+		}
+
+		.inputTipo {
+			grid-area: inputTipo;
+		}
+
+		.labelDescripcion {
+			grid-area: labelDescripcion;
+		}
+
+		.inputDescripcion {
+			grid-area: inputDescripcion;
+		}
+
+		.labelUsuario {
+			grid-area: labelUsuario;
+		}
+
+		.inputUsuario {
+			grid-area: inputUsuario;
+		}
+
+		.labelContrasenia {
+			grid-area: labelContrasenia;
+		}
+
+		.inputContrasenia {
+			grid-area: inputContrasenia;
+		}
+
+		.botonAceptar {
+			grid-area: botonAceptar;
+		}
+
+		grid-template-areas: "titulo titulo"
+		"labelTipo inputTipo"
+		"labelDescripcion inputDescripcion"
+		"labelUsuario inputUsuario"
+		"labelContrasenia inputContrasenia"
+		"botonAceptar botonAceptar";
+	}
+}
