@@ -1,7 +1,6 @@
 import { CAlfabeto } from "./CAlfabeto";
 import { CRotor } from "./CRotor";
 import { CReflector } from "./CReflector";
-import { format } from "url";
 
 export class CEnigma {
 
@@ -89,8 +88,9 @@ export class CEnigma {
         for (let i = 0; i < texto.length; ++i) {
             cadena += this.cifrarLetra(texto[i]);
         }
+        this.rotorI.reiniciar();
+        this.rotorII.reiniciar();
+        this.rotorIII.reiniciar();
         return cadena;
     }
 }
-
-

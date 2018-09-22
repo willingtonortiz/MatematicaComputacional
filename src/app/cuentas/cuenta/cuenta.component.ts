@@ -14,7 +14,7 @@ export class CuentaComponent implements OnInit {
 	private enigma: CEnigma;
 
 	constructor() {
-		this.enigma = CEnigma.getInstancia(0, 0, 0);
+		this.enigma = CEnigma.getInstancia(10, 10, 10);
 	}
 
 	ngOnInit() {
@@ -26,11 +26,5 @@ export class CuentaComponent implements OnInit {
 
 	public cifrarAlgo() {
 		this.escondido = !this.escondido;
-		// let cadenaOriginal: string = '';
-		// let cadenaCifrada: string = '';
-		// for (let i = 0; i < cadenaOriginal.length; ++i) {
-		// 	cadenaCifrada += this.enigma.cifrar(cadenaOriginal[i]);
-		// }
-		// console.log(cadenaCifrada);
 	}
 }

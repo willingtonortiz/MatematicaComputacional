@@ -1,5 +1,6 @@
 export class CRotor {
-
+    private longitud: number;
+    private rotacionesIniciales: number;
     private alfabeto: string[];
     public diccionario: string[];
     private claves: string[];
@@ -7,6 +8,8 @@ export class CRotor {
     public indiceRotacion: number;
 
     constructor(alfabeto: string[], claves: string[], indiceRotacion: number, cantidadRotaciones: number) {
+        this.longitud = alfabeto.length;
+        this.rotacionesIniciales = cantidadRotaciones;
         // Referencia al alfabeto general
         this.alfabeto = alfabeto;
 
@@ -35,7 +38,7 @@ export class CRotor {
         // Obtiene la letra al final del diccionario
         this.diccionario.push(ultimo);
 
-        if (++this.indice === this.diccionario.length) this.indice = 0;
+        if (++this.indice === this.longitud) this.indice = 0;
 
         if (this.indice === this.indiceRotacion) return true;
         return false;
@@ -84,4 +87,17 @@ export class CRotor {
         }
     }
 
+    public reiniciar(): void {
+        while (this.indice !== this.rotacionesIniciales) {
+            this.rotar();
+        }
+    }
+
+    public mostrarDiccionario(): void {
+        let cadena: string = '';
+        for (let i = 0; i < this.longitud; ++i) {
+            cadena += this.diccionario[i] + ' ';
+        }
+        console.log(cadena);
+    }
 }
