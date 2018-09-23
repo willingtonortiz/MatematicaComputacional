@@ -2,28 +2,48 @@
 
 	<form class="formulario">
 
-		<div class="titulo">
+		<div class="titulo form-subdiv">
 			<h1>Nueva cuenta</h1>
 		</div>
 
-		<label class="labelTipo">Tipo de cuenta</label>
-		<select class="inputTipo">
-			<option>Facebook</option>
-			<option>Twitter</option>
-			<option>Spotify</option>
-			<option>UPC</option>
-		</select>
-		<label class="labelDescripcion">Descripcion de la cuenta</label>
-		<input class="inputDescripcion" type="text" placeholder="Descripcion">
+		<div class="tipo form-subdiv">
+			<label class="labelTipo">Tipo de cuenta:</label>
+			<select class="inputTipo">
+				<option>Facebook</option>
+				<option>Twitter</option>
+				<option>Spotify</option>
+				<option>UPC</option>
+			</select>
+			
 
-		<label class="labelUsuario">Usuario o correo:</label>
-		<input class="inputUsuario" type="text" placeholder="Usuario">
+		</div>
+		<div class="descripcion form-subdiv">
+			<label class="labelDescripcion">Descripcion de la cuenta:</label>
+			<input class="inputDescripcion" type="text" placeholder="Descripcion">
+			
 
-		<label class="labelContrasenia">Contraseña:</label>
-		<input class="inputContrasenia" type="password" placeholder="Contraseña">
+		</div>
+		
+		<div class="Usuario form-subdiv">
+			<label class="labelUsuario">Usuario o correo:</label>
+			<input class="inputUsuario" type="text" placeholder="Usuario">
+			
 
-		<input class="botonAceptar" type="button" value="Aceptar">
+
+		</div>
+		<div class="contrasenia form-subdiv">
+			<label class="labelContrasenia">Contraseña:</label>
+			<input class="inputContrasenia" type="password" placeholder="Contraseña">
+			
+
+
+		</div>
+		<div class="aceptar form-subdiv">
+			<input class="botonAceptar" type="button" value="Aceptar">				
+		</div>
+
 
 	</form>
 
 </div>
+<button id="close-modal" routerLink="../inicio">X</button>

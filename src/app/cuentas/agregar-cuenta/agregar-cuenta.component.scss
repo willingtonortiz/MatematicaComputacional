@@ -2,74 +2,200 @@
 	height: 100%;
 	width: 100%;
 	display: grid;
-	justify-content: center;
-	align-content: center;
-
+	// justify-content: center;
+	// align-content: center;
+	background: linear-gradient(135deg,#272a35,#222130);
+	position: relative;
 	.formulario {
-		border: 1px solid red;
 		display: grid;
-		grid-template-columns: 1fr 1fr;
-		grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
-		color: #eee;
+		grid-template-columns: auto;
+		
+		color: #eee;	
+		.form-subdiv{
+			position: relative;
+			display: grid;
+			grid-template-columns: auto;
+			font-family: 'Open Sans', sans-serif;				
+			input{
+				background: rgba(255,255,255,.02);
+				border-radius: 6px;
+				border:none;
+				padding: 10px;
+				color: #eee;
+				height: 40px;
 
-		.titulo,
-		.labelTipo,
-		.inputTipo,
-		.labelDescripcion,
-		.inputDescripcion,
-		.labelUsuario,
-		.inputUsuario,
-		.labelContrasenia,
-		.inputContrasenia,
-		.botonAceptar {
-			border: 1px solid red;
+			}
+			input:focus{
+				outline-color: #5DF1B1;
+				
+			}
+			select{
+				background: transparent;
+				border: 1px solid  #5DF1B1;
+				color: #eee;
+				border-radius: 6px;
+				height: 35px;
+				padding: 0 5px;
+			}
+			.botonAceptar{
+				background: #5DF1B1;
+				color: #1E2024;
+				font-weight: 700;
+			}
+		}	
+		.titulo{
+			display: initial;
+			h1{
+				padding-bottom: 15px;
+				font-family: 'Open Sans', sans-serif;
+				border-bottom: 1px solid #5DF1B1;
+			}
 		}
 
-		.titulo {
-			grid-area: titulo;
-		}
 
-		.labelTipo {
-			grid-area: labelTipo;
-		}
 
-		.inputTipo {
-			grid-area: inputTipo;
-		}
 
-		.labelDescripcion {
-			grid-area: labelDescripcion;
-		}
 
-		.inputDescripcion {
-			grid-area: inputDescripcion;
-		}
+	}
+}
+#close-modal{
+	position: absolute;
+	top: 10%;
+	right: 10%;
+	font-size: 17px;
+	font-weight: 700;
+	border: none;
+	background: rgba(255,255,255,.02);
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	color: #5DF1B1;
+	cursor: pointer;
+	transition: all .2s ease-in-out;
+}
+#close-modal:hover{
+	background: rgba(222, 222, 222, .05);
+	text-shadow: 0 0 4px #5DF1B1;
+	border: 1px solid #5DF1B1;
+	box-shadow: 0 0 4px #5DF1B1;
+}
+@media only screen and (min-width:320px) {
+	.contenedor{
+		.formulario{
+			grid-gap: 20px;
+			padding: 25px 25px;
+			.form-subdiv{
+				input{
+					height: 40px;
+				}
+			}
+			.botonAceptar{
+				height: 25px;
+				font-size: 15px;
+				padding: 0px;
 
-		.labelUsuario {
-			grid-area: labelUsuario;
+			}
+			
 		}
-
-		.inputUsuario {
-			grid-area: inputUsuario;
+		.titulo{
+			h1{
+				font-size: 24px;
+			}
 		}
+	}
+	#close-modal{
+		width: 35px;
+		height: 35px;
+		top: 3%;
+		right: 5%;
+		font-size: 14px;
+	}
+}
 
-		.labelContrasenia {
-			grid-area: labelContrasenia;
+@media only screen and (min-width:600px) {
+	.contenedor{
+		.formulario{
+			grid-gap: 50px;
+			padding: 50px 100px;
+			.form-subdiv{
+				font-size: 24px;
+				input{
+					font-size: inherit;
+					padding: 25px  20px;
+					height: 50px;
+					font-weight: 100;
+					font-size: 20px;
+				}
+				select{
+					width: 200px;
+					font-size: 22px;
+				}
+				.botonAceptar{
+					width: 300px;
+					background: #5DF1B1;
+					color: #1E2024;
+					font-weight: 700;
+					padding: 5px 15px;
+					font-size: 18px;
+					height: 50px;
+				}
+			}
+			.aceptar{
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+
 		}
-
-		.inputContrasenia {
-			grid-area: inputContrasenia;
+		.titulo{
+			h1{
+				font-size: 42px;
+			}
 		}
+	}
+	#close-modal{
+		width: 50px;
+		height: 50px;
+		top: 5%;
+		right: 10%;
+		font-size: 17px;
+	}
+}
 
-		.botonAceptar {
-			grid-area: botonAceptar;
+@media only screen and (min-width:1200px) {
+	.contenedor{
+		.formulario{
+			width: 600px;
+			margin: 0 auto;
+			padding: 100px 0;
+			grid-gap: 0px;
+
+			.form-subdiv{
+				grid-template-columns: 360px auto;
+				height: 50px;
+				label{
+					width: 300px;
+				}
+			}
+			.titulo{
+				margin-bottom: 50px;
+				h1{
+					font-size: 49px;
+				}
+			}
+			.aceptar{
+				margin-top: 50px;
+			}
 		}
+	}
+}
 
-		grid-template-areas: "titulo titulo"
-		"labelTipo inputTipo"
-		"labelDescripcion inputDescripcion"
-		"labelUsuario inputUsuario"
-		"labelContrasenia inputContrasenia"
-		"botonAceptar botonAceptar";
+@media only screen and (min-width:1800px){
+	#close-modal{
+		width: 80px;
+		height: 80px;
+		top: 5%;
+		right: 10%;
+		font-size: 28px;
 	}
 }
