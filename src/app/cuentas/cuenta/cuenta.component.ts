@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CEnigma } from '../../Clases/Enigma/CEnigma';
 import { CCuenta } from '../../Clases/Cuenta/CCuenta';
+import { CRotorPosicion } from '../../Clases/Enigma/CRotorPosicion';
 
 @Component({
 	selector: 'app-cuenta',
@@ -14,17 +15,21 @@ export class CuentaComponent implements OnInit {
 	private enigma: CEnigma;
 
 	constructor() {
-		this.enigma = CEnigma.getInstancia(10, 10, 10);
+		this.enigma = CEnigma.getInstancia(0, 0, 0);
+
 	}
 
 	ngOnInit() {
 		this.cuenta.usuario = this.enigma.cifrarTexto(this.cuenta.usuario);
-		// console.log(this.usuario);
 		this.cuenta.contrasenia = this.enigma.cifrarTexto(this.cuenta.contrasenia);
-		// console.log(this.contrasenia);
 	}
 
-	public cifrarAlgo() {
+	public toggleCuenta() {
 		this.escondido = !this.escondido;
+	}
+
+	public desencriptar() {
+		this.cuenta.usuario = this.enigma.cifrarTexto(this.cuenta.usuario);
+		this.cuenta.contrasenia = this.enigma.cifrarTexto(this.cuenta.contrasenia);
 	}
 }

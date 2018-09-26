@@ -1,103 +1,56 @@
+import { CPar } from "./CPar";
+
 export class CRotor {
     private longitud: number;
-    private rotacionesIniciales: number;
-    private alfabeto: string[];
-    public diccionario: string[];
-    private claves: string[];
-    public indice: number;
-    public indiceRotacion: number;
+    private rotaciones: number;
+    private indiceRotacion: number;
+    private claves: CPar[];
+    private indice: number;
 
-    constructor(alfabeto: string[], claves: string[], indiceRotacion: number, cantidadRotaciones: number) {
-        this.longitud = alfabeto.length;
-        this.rotacionesIniciales = cantidadRotaciones;
-        // Referencia al alfabeto general
-        this.alfabeto = alfabeto;
-
-        // Se crea una copia del alfabeto, el cual se usará para rotaciones
-        this.diccionario = new Array<string>();
-        for (let i = 0; i < this.alfabeto.length; ++i) {
-            this.diccionario.push(alfabeto[i]);
-        }
-
-        // Se asignan las clases
+    constructor(claves: CPar[], indiceRotacion: number, rotaciones: number) {
         this.claves = claves;
-
-        // Rotaciones
-        this.indice = 0;
+        this.longitud = claves.length;
         this.indiceRotacion = indiceRotacion;
-        for (let i = 0; i < cantidadRotaciones; ++i) {
-            this.rotar();
-        }
+        this.rotaciones = rotaciones;
+        this.indice = rotaciones;
     }
 
     // Rota el diccionario del rotor
     public rotar(): boolean {
-        // Obtiene la primera letra del diccionario
-        let ultimo: string = this.diccionario.shift();
-
-        // Obtiene la letra al final del diccionario
-        this.diccionario.push(ultimo);
-
         if (++this.indice === this.longitud) this.indice = 0;
 
         if (this.indice === this.indiceRotacion) return true;
         return false;
     }
 
-    // Obtiene la posicion del aumento en el diccionario del rotor
-    public posicionCifrada(posicion: number): number {
-        // Se obtiene el aumento para el diccionario del rotor
-        //posicion = posicion % this.diccionario.length;
-
-        // Obtiene la letra que tiene la 'posicion' en el diccionario del rotor
-        let letra: string = this.diccionario[posicion];
-
-        let clave: string = this.cifrarLetra(letra);
-
-        // Se busca la 'posicion' de la clave en el diccionario
-        for (let i = 0; i < this.diccionario.length; ++i) {
-            if (this.diccionario[i] === clave) return i;
-        }
+    public posClave(aumento: number): number {
+        let pos = (this.indice + aumento) % this.longitud;
+        pos = (this.claves[pos].clave.index - this.indice) % this.longitud;
+        if (pos < 0) pos += this.longitud;
+        return pos;
     }
 
-    public posicionDescifrada(posicion: number): number {
+    public posLetra(aumento: number): number {
+        let pos = (this.indice + aumento) % this.longitud;
 
-        let letra: string = this.diccionario[posicion];
-
-        let clave: string = this.descifrarLetra(letra);
-
-        // Se busca la 'posicion' de la clave en el diccionario
-        for (let i = 0; i < this.diccionario.length; ++i) {
-            if (clave === this.diccionario[i]) return i;
-        }
-    }
-
-    // Trasforma la letra a partir del arreglo de claves
-    public cifrarLetra(letra: string): string {
-        for (let i = 0; i < this.alfabeto.length; ++i) {
-            if (letra === this.alfabeto[i])
-                return this.claves[i];
-        }
-    }
-
-    public descifrarLetra(letra: string): string {
-        for (let i = 0; i < this.claves.length; ++i) {
-            if (letra === this.claves[i])
-                return this.alfabeto[i];
-        }
+        pos = (this.claves[pos].origen.index - this.indice) % this.longitud;
+        if (pos < 0) pos += this.longitud;
+        return pos;
     }
 
     public reiniciar(): void {
-        while (this.indice !== this.rotacionesIniciales) {
-            this.rotar();
-        }
+        this.indice = this.rotaciones;
     }
 
     public mostrarDiccionario(): void {
-        let cadena: string = '';
         for (let i = 0; i < this.longitud; ++i) {
-            cadena += this.diccionario[i] + ' ';
+            console.log(this.claves[i]);
         }
-        console.log(cadena);
+    }
+
+    public sigueRotacion(): boolean {
+        if ((this.indice + 1) % this.longitud === this.indiceRotacion)
+            return true;
+        return false;
     }
 }

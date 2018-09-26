@@ -5,6 +5,7 @@ import { CuentasRoutingModule } from "./cuentas-routing.module";
 import { CuentaComponent } from './cuenta/cuenta.component';
 import { CuentasComponent } from './cuentas/cuentas.component';
 import { AgregarCuentaComponent } from './agregar-cuenta/agregar-cuenta.component';
+import { PinComponent } from './pin/pin.component';
 
 /* COMPONENTES */
 
@@ -19,7 +20,9 @@ import { AgregarCuentaComponent } from './agregar-cuenta/agregar-cuenta.componen
 
     CuentasComponent,
 
-    AgregarCuentaComponent]
+    AgregarCuentaComponent,
+
+    PinComponent]
 })
 
 export class CuentasModule { }

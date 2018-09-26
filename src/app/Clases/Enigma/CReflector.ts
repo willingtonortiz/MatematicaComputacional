@@ -1,20 +1,15 @@
-export class CReflector {
-    private alfabeto: string[];
-    private claves: string[];
+import { CPar } from "./CPar";
 
-    constructor(alfabeto: string[], claves: string[]) {
-        this.alfabeto = alfabeto;
+export class CReflector {
+    private claves: CPar[];
+
+    constructor(claves: CPar[]) {
         this.claves = claves;
     }
 
     // Devuelve la posicion en el alfabeto de la letra transformada
     public transformar(posicion: number): number {
-        let clave = '';
-        clave = this.claves[posicion];
-
-        for (let i = 0; i < this.alfabeto.length; ++i) {
-            if (clave === this.alfabeto[i]) return i;
-        }
+        return this.claves[posicion].clave.index;;
     }
 
 }

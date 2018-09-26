@@ -23,24 +23,28 @@ export class CEnigma {
     constructor(rotacionesIII: number, rotacionesII: number, rotacionesI: number) {
         this.alfabetos = CAlfabeto.getInstancia();
         this.alfabeto = this.alfabetos.alfabeto;
+
         this.rotorI = new CRotor(
-            this.alfabetos.alfabeto,
-            this.alfabetos.rotorI,
+            this.alfabetos.alphaRotorI,
             17,
-            rotacionesI);
+            rotacionesI
+        );
+
         this.rotorII = new CRotor(
-            this.alfabetos.alfabeto,
-            this.alfabetos.rotorII,
+            this.alfabetos.alphaRotorII,
             5,
-            rotacionesII);
+            rotacionesII
+        );
+
         this.rotorIII = new CRotor(
-            this.alfabetos.alfabeto,
-            this.alfabetos.rotorIII,
+            this.alfabetos.alphaRotorIII,
             22,
-            rotacionesIII);
+            rotacionesIII
+        );
+
         this.reflector = new CReflector(
-            this.alfabetos.alfabeto,
-            this.alfabetos.alfaInversor);
+            this.alfabetos.alphaReflector
+        );
     }
 
     // Calcula el aumento de la letra de entrada a partir del alfabeto
@@ -66,19 +70,21 @@ export class CEnigma {
             }
         }
         else {
-            if (((this.rotorII.indice + 1) % this.rotorII.diccionario.length) === this.rotorII.indiceRotacion) {
+            if (this.rotorII.sigueRotacion()) {
                 this.rotorII.rotar();
                 this.rotorI.rotar();
             }
         }
-        clave = this.rotorIII.posicionCifrada(clave);
-        clave = this.rotorII.posicionCifrada(clave);
-        clave = this.rotorI.posicionCifrada(clave);
+
+        clave = this.rotorIII.posClave(clave);
+        clave = this.rotorII.posClave(clave);
+        clave = this.rotorI.posClave(clave);
         clave = this.reflector.transformar(clave);
-        clave = this.rotorI.posicionDescifrada(clave);
-        clave = this.rotorII.posicionDescifrada(clave);
-        clave = this.rotorIII.posicionDescifrada(clave);
+        clave = this.rotorI.posLetra(clave);
+        clave = this.rotorII.posLetra(clave);
+        clave = this.rotorIII.posLetra(clave);
         clave = this.calcularLetra(clave);
+
         return clave;
     }
 
