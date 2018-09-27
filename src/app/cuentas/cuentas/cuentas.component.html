@@ -12,4 +12,5 @@
 		<app-cuenta *ngFor="let cuenta of cuentas" 
 		[cuenta]="cuenta"></app-cuenta>
 	</div>
+	<app-pin *ngIf="showPinModal"></app-pin>
 </div>

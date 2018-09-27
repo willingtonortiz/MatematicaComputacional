@@ -10,7 +10,7 @@ import { CEnigma } from '../../Clases/Enigma/CEnigma';
 })
 
 export class CuentasComponent implements OnInit {
-
+	public showPinModal: boolean = false;
 	public cuentas: Array<CCuenta> = [
 		new CCuenta('Facebook', 'USUARIOA', 'CONTRAA'),
 		new CCuenta('Spotify', 'USUARIOB', 'CONTRAB'),
