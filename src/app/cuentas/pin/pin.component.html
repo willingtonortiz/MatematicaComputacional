@@ -4,12 +4,12 @@
 		<h1>Ingresar Pin</h1>
 
 		<div class="coleccion-inputs-pin">
-			<input type="text" maxlength="1" class="input-pincode">
-			<input type="text" maxlength="1" class="input-pincode">
-			<input type="text" maxlength="1" class="input-pincode">
-			<input type="text" maxlength="1" class="input-pincode">
-			<input type="text" maxlength="1" class="input-pincode">
-			<input type="text" maxlength="1" class="input-pincode">
+			<input #pinref1 [(ngModel)]="pinfieldcode1" (input)="focusNext2()" type="text" maxlength="1" class="input-pincode">
+			<input #pinref2 [(ngModel)]="pinfieldcode2" (input)="focusNext3()" type="text" maxlength="1" class="input-pincode">
+			<input #pinref3 [(ngModel)]="pinfieldcode3" (input)="focusNext4()" type="text" maxlength="1" class="input-pincode">
+			<input #pinref4 [(ngModel)]="pinfieldcode4" (input)="focusNext5()" type="text" maxlength="1" class="input-pincode">
+			<input #pinref5 [(ngModel)]="pinfieldcode5"(input)="focusNext6()" type="text" maxlength="1" class="input-pincode">
+			<input #pinref6 [(ngModel)]="pinfieldcode6" type="text" maxlength="1" class="input-pincode">
 		</div>
 
 		<div class="button-send-pin">

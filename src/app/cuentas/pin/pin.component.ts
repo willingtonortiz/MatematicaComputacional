@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ElementRef,ViewChild,AfterViewInit } from "@angular/core";
 import { PinService } from "../../Servicios/pin.service";
 import { Router } from "@angular/router";
 
@@ -8,65 +8,59 @@ import { Router } from "@angular/router";
 	styleUrls: ["./pin.component.scss"]
 })
 
-export class PinComponent implements OnInit {
+export class PinComponent implements AfterViewInit {
+
+
+	contador =0;
+	pinfieldcode1 = ''
+	pinfieldcode2 = ''
+	pinfieldcode3 = ''
+	pinfieldcode4 = ''
+	pinfieldcode5 = ''
+	pinfieldcode6 = ''
+	@ViewChild('pinref1') nameElementRef1:ElementRef;
+	@ViewChild('pinref2') nameElementRef2:ElementRef;
+	@ViewChild('pinref3') nameElementRef3:ElementRef;
+	@ViewChild('pinref4') nameElementRef4:ElementRef;
+	@ViewChild('pinref5') nameElementRef5:ElementRef;
+	@ViewChild('pinref6') nameElementRef6:ElementRef;
+	lista:any[] =[
+		"1","2"
+	];
 	constructor(
 		private router: Router
-	) { }
+	) { 
 
-	ngOnInit() {
-		// this.effectoFocusForm();
-		// this.mostrarPin();
-		// this.vaciarInputs();
 	}
 
-	public effectoFocusForm() {
-		// let inputsField = document.getElementsByClassName("input-pincode");
-		// for (let i = 0; i < inputsField.length; ++i) {
-		// 	inputsField[i].addEventListener("input", () => {
-		// 		if (
-		// 			inputsField[i].nodevalue.length === 1 &&
-		// 			inputsField[i].value !== " "
-		// 		) {
-		// 			if (i + 1 !== inputsField.length) {
-		// 				inputsField[i + 1].focus();
-		// 			}
-		// 		} else {
-		// 			console.log("No pongas espacios puto");
-		// 		}
-		// 	});
-		// }
-	}
 
-	public mostrarPin() {
-		// let pin = "";
-		// document.getElementById("send-pin").addEventListener("click", () => {
-		// 	let inputsField = document.getElementsByClassName("input-pincode");
-		// 	for (let i = 0; i < inputsField.length; ++i) {
-		// 		pin += inputsField[i].value;
-		// 	}
-		// 	if (pin.length === 6) {
-		// 		let valido = true;
-		// 		for (let i = 0; i < 6; ++i) {
-		// 			if (pin[i] === " ") {
-		// 				valido = false;
-		// 			}
-		// 		}
-		// 		if (valido) {
-		// 			console.log(pin);
-		// 		} else {
-		// 			console.log("PIN INVÁLIDO");
-		// 		}
-		// 	} else {
-		// 		this.vaciarInputs();
-		// 	}
-		// });
+	ngAfterViewInit(){
+		this.nameElementRef1.nativeElement.focus();
 	}
-
-	public vaciarInputs() {
-		// let inputsField = document.getElementsByClassName("field");
-		// for (let i = 0; i < inputsField.length; ++i) {
-		// 	inputsField[i].value = "";
-		// }
+	focusNext2(){
+		if(this.pinfieldcode1.length == 1){
+			this.nameElementRef2.nativeElement.focus();
+		}
+	}
+	focusNext3(){
+		if(this.pinfieldcode2.length == 1){
+		this.nameElementRef3.nativeElement.focus();
+		}
+	}
+	focusNext4(){
+		if(this.pinfieldcode3.length == 1){
+		this.nameElementRef4.nativeElement.focus();
+		}
+	}
+	focusNext5(){
+		if(this.pinfieldcode4.length == 1){
+		this.nameElementRef5.nativeElement.focus();
+		}
+	}
+	focusNext6(){
+		if(this.pinfieldcode5.length == 1){
+		this.nameElementRef6.nativeElement.focus();
+		}
 	}
 
 	public procesarPin() {
@@ -80,5 +74,6 @@ export class PinComponent implements OnInit {
 			PinService.actual = PinService.intento;
 			this.router.navigate(['cuentas', 'inicio']);
 		}
+		console.log(cadena);
 	}
 }
