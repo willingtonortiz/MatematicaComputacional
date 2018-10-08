@@ -1,17 +1,22 @@
 import { Component, OnInit } from "@angular/core";
+import { PinService } from "../../Servicios/pin.service";
+import { Router } from "@angular/router";
 
 @Component({
 	selector: "app-pin",
 	templateUrl: "./pin.component.html",
 	styleUrls: ["./pin.component.scss"]
 })
+
 export class PinComponent implements OnInit {
-	constructor() {}
+	constructor(
+		private router: Router
+	) { }
 
 	ngOnInit() {
-		this.effectoFocusForm();
-		this.mostrarPin();
-		this.vaciarInputs();
+		// this.effectoFocusForm();
+		// this.mostrarPin();
+		// this.vaciarInputs();
 	}
 
 	public effectoFocusForm() {
@@ -31,6 +36,7 @@ export class PinComponent implements OnInit {
 		// 	});
 		// }
 	}
+
 	public mostrarPin() {
 		// let pin = "";
 		// document.getElementById("send-pin").addEventListener("click", () => {
@@ -55,10 +61,24 @@ export class PinComponent implements OnInit {
 		// 	}
 		// });
 	}
+
 	public vaciarInputs() {
 		// let inputsField = document.getElementsByClassName("field");
 		// for (let i = 0; i < inputsField.length; ++i) {
 		// 	inputsField[i].value = "";
 		// }
+	}
+
+	public procesarPin() {
+		let pines = document.getElementsByClassName('input-pincode');
+		let cadena: string = '';
+		for (let i = 0; i < pines.length; ++i) {
+			cadena += (<HTMLInputElement>pines[i]).value;
+		}
+
+		if (cadena === PinService.pin) {
+			PinService.actual = PinService.intento;
+			this.router.navigate(['cuentas', 'inicio']);
+		}
 	}
 }

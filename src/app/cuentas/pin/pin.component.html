@@ -1,18 +1,20 @@
 <div class="pin-container">
-  <div class="form-pin-container">
-    <h1>Ingresar Pin</h1>
+	<div class="form-pin-container">
 
-    <div class="coleccion-inputs-pin">
-        <input type="text" maxlength="1" class="input-pincode">
-        <input type="text" maxlength="1" class="input-pincode">
-        <input type="text" maxlength="1" class="input-pincode">
-        <input type="text" maxlength="1" class="input-pincode">
-        <input type="text" maxlength="1" class="input-pincode">
-        <input type="text" maxlength="1" class="input-pincode">
-    </div>
-    <div class="button-send-pin">
-      <button id="send-pin">Enviar</button>
-    </div>
+		<h1>Ingresar Pin</h1>
 
-  </div>
+		<div class="coleccion-inputs-pin">
+			<input type="text" maxlength="1" class="input-pincode">
+			<input type="text" maxlength="1" class="input-pincode">
+			<input type="text" maxlength="1" class="input-pincode">
+			<input type="text" maxlength="1" class="input-pincode">
+			<input type="text" maxlength="1" class="input-pincode">
+			<input type="text" maxlength="1" class="input-pincode">
+		</div>
+
+		<div class="button-send-pin">
+			<button (click)="procesarPin()" id="send-pin">Enviar</button>
+		</div>
+
+	</div>
 </div>

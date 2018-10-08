@@ -1,6 +1,6 @@
 <div class="contenedor">
 
-	<form class="formulario">
+	<form #frm="ngForm" (ngSubmit)="onSubmit(frm)" class="formulario">
 
 		<div class="titulo form-subdiv">
 			<h1>Nueva cuenta</h1>
@@ -8,42 +8,35 @@
 
 		<div class="tipo form-subdiv">
 			<label class="labelTipo">Tipo de cuenta:</label>
-			<select class="inputTipo">
+			<select class="inputTipo" name="tipo" ngModel>
 				<option>Facebook</option>
 				<option>Twitter</option>
 				<option>Spotify</option>
 				<option>UPC</option>
 			</select>
-			
-
 		</div>
+
 		<div class="descripcion form-subdiv">
 			<label class="labelDescripcion">Descripcion de la cuenta:</label>
-			<input class="inputDescripcion" type="text" placeholder="Descripcion">
-			
-
+			<input class="inputDescripcion" type="text" placeholder="Descripcion" name="descripcion" ngModel>
 		</div>
-		
+
 		<div class="Usuario form-subdiv">
 			<label class="labelUsuario">Usuario o correo:</label>
-			<input class="inputUsuario" type="text" placeholder="Usuario">
-			
-
-
+			<input class="inputUsuario" type="text" placeholder="Usuario" name="usuario" ngModel>
 		</div>
+
 		<div class="contrasenia form-subdiv">
 			<label class="labelContrasenia">Contraseña:</label>
-			<input class="inputContrasenia" type="password" placeholder="Contraseña">
-			
-
-
+			<input class="inputContrasenia" type="password" placeholder="Contraseña" name="contrasenia" ngModel>
 		</div>
+
 		<div class="aceptar form-subdiv">
-			<input class="botonAceptar" type="button" value="Aceptar">				
+			<button class="botonAceptar">Aceptar</button>
 		</div>
-
 
 	</form>
 
 </div>
+
 <button id="close-modal" routerLink="../inicio">X</button>

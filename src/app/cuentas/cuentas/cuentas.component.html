@@ -9,8 +9,8 @@
 		<h2>Mis Cuentas</h2>
 	</div>
 	<div class="cuentas">
-		<app-cuenta *ngFor="let cuenta of cuentas" 
-		[cuenta]="cuenta"></app-cuenta>
+		<app-cuenta *ngFor="let cuenta of cuentas; let i = index" 
+		[cuenta]="cuenta" [id]="i"></app-cuenta>
 	</div>
 	<app-pin *ngIf="showPinModal"></app-pin>
 </div>
