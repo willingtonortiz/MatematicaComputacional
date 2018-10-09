@@ -3,7 +3,9 @@
 	flex-flow: column nowrap;
 	align-items: center;
 	height: 100%;
-
+	.itemUp1366{
+		display: none;
+	}
 	.titulo {
 		h2 {
 			font-size: 1rem;
@@ -26,7 +28,7 @@
 		flex-flow: column nowrap;
 		justify-content: flex-start;
 		width: 80%;
-		overflow-y: scroll;
+		// overflow-y: scroll;
 
 		app-cuenta {
 			margin-bottom: 1rem;
@@ -124,4 +126,27 @@
 		}
 	}
 
+}
+@media only screen and( min-width:1366px){
+	.contenedor{
+		.titulo{
+			width: 90%;
+			display: flex;
+			.down1366{
+				display: none;
+			}
+			.itemUp1366{
+				display: initial;
+				font-family: 'Open Sans', sans-serif;
+				font-size: 19px;
+				font-weight: 400;
+				width: 20%;
+				margin-bottom: 5px;
+
+			}
+		}
+		.cuentas{
+			width: 90%;
+		}
+	}
 }

@@ -86,6 +86,16 @@
 		display: none;
 	}
 
+	.container-showup1366{
+		display: none;
+	}
+
+	.img-icon{ grid-area: icon;}
+	.descripcion-cuenta{ grid-area: cuenta;}
+	.usuario-correo{ grid-area: usuario;}
+	.contrasenia-PIN{ grid-area: password;}
+	.estado{ grid-area: estado;}
+	.accion { grid-area: accion;}
 
 }
 
@@ -152,4 +162,43 @@
 		}
 	}
 
+}
+
+@media only screen and (min-width: 1366px){
+	.contenedor{
+		border-radius: 10px;
+		padding: 1rem 0;
+		.down1366{
+			display: none;
+		}
+		.container-showup1366{
+			display: flex;
+			text-align: center;
+			align-items: center;
+			position: relative;
+			.infocuenta{
+				width: 20%;
+				color: #fff;
+				font-family: 'Open Sans', sans-serif;
+				font-size: 14px;
+				.candado{
+					color: #5DF1B1;
+					i{
+						margin: 0 5px;
+					}
+				}
+			}
+			.tipo-cuenta-img{
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				position: absolute;
+				left: 2%;
+				top: 0%;
+				img{
+					max-width: 20px;
+				}
+			}
+		}
+	}
 }

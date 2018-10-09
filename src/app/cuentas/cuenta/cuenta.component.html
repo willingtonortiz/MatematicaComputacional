@@ -1,5 +1,5 @@
 <div class="contenedor">
-	<div class="nombre">
+	<div class="nombre down1366">
 		<h2 class="candado"><i class="fas fa-lock"></i></h2>
 		<h2 id="descr-cuenta">
 			<div id="descr-img">
@@ -9,7 +9,7 @@
 		</h2>
 		<button class="botonToggle" (click)="toggleCuenta()"></button>
 	</div>
-	<div class=" contenido" [hidden]="escondido">
+	<div class=" contenido down1366" [hidden]="escondido">
 		<div class="fila">
 			<h2>Usuario o Correo:</h2>
 			<h2 class="usuario encript-data">{{usuario}}</h2>
@@ -21,5 +21,27 @@
 		<div class="fila">
 			<button (click)="procesarPin()">Desencriptar</button>
 		</div>
+	</div>
+	<div class="container-showup1366 .laptop-container">
+		<div class="tipo-cuenta-img">
+			<img src="../../../assets/google Icon.png" alt="">
+
+		</div>
+		<div class="descripcion-cuenta infocuenta"> 
+			Cuenta de {{tipo}}
+		</div>
+		<div class="usuario-correo infocuenta"> 
+			{{usuario}}
+		</div>
+		<div class="contrasenia-PIN infocuenta"> 
+			{{contrasenia}}
+		</div>
+		<div class="estado infocuenta">
+			<p class="candado"><i class="fas fa-lock"></i>Protegido</p>
+		</div>
+		<div class="accion infocuenta">
+			Desencriptar
+		</div>
+
 	</div>
 </div>
