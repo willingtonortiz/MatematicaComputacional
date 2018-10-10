@@ -12,7 +12,8 @@ import { environment } from "../environments/environment";
 /* COMPONENTES */
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
+import { CuentasService } from './Servicios/cuentas.service';
+import {AuthenticationService}  from './Servicios/authentication.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +27,7 @@ import { AppComponent } from './app.component';
     BrowserModule,
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [AuthenticationService,CuentasService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

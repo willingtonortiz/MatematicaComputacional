@@ -1,6 +1,7 @@
 import { Component, OnInit, ElementRef,ViewChild,AfterViewInit } from "@angular/core";
 import { PinService } from "../../Servicios/pin.service";
 import { Router } from "@angular/router";
+import {PersonaService} from "../../Servicios/persona.service";
 
 @Component({
 	selector: "app-pin",
@@ -9,8 +10,6 @@ import { Router } from "@angular/router";
 })
 
 export class PinComponent implements AfterViewInit {
-
-
 	contador =0;
 	pinfieldcode1 = ''
 	pinfieldcode2 = ''
@@ -24,13 +23,15 @@ export class PinComponent implements AfterViewInit {
 	@ViewChild('pinref4') nameElementRef4:ElementRef;
 	@ViewChild('pinref5') nameElementRef5:ElementRef;
 	@ViewChild('pinref6') nameElementRef6:ElementRef;
+	nuevo:boolean=false;
 	lista:any[] =[
 		"1","2"
 	];
 	constructor(
-		private router: Router
+		private router: Router,private personaService:PersonaService
 	) { 
-
+		this.nuevo=personaService.nuevo;
+		console.log(this.nuevo);
 	}
 
 
@@ -75,5 +76,15 @@ export class PinComponent implements AfterViewInit {
 			this.router.navigate(['cuentas', 'inicio']);
 		}
 		console.log(cadena);
+	}
+	public generarPin() {
+		let pines = document.getElementsByClassName('input-pincode');
+		let cadena: string = '';
+		for (let i = 0; i < pines.length; ++i) {
+			cadena += (<HTMLInputElement>pines[i]).value;
+		}
+
+		PinService.pin=cadena;
+		this.router.navigate(['cuentas', 'inicio']);
 	}
 }

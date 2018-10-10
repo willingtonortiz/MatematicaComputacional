@@ -33,4 +33,5 @@ export class AgregarCuentaComponent implements OnInit {
 			this.router.navigate(['cuentas', 'inicio']);
 		}
 	}
+
 }

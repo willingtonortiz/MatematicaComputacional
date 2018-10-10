@@ -17,7 +17,7 @@ export class CabeceraComponent implements OnInit {
 
   ngOnInit() {
   }
-  loginWithGoole(): void {
+  loginWithGoogle(): void {
     console.log("Logueo");
     this.authenticationService
       .signInWithGoogle()
@@ -30,7 +30,10 @@ export class CabeceraComponent implements OnInit {
           this.router.navigate(['cuentas', 'pin']);
         }
         else
-        this.router.navigate(['cuentas', 'pin']);
+        {
+        console.log("ya existe");
+        this.router.navigate(['cuentas']);
+        }
       })
       .catch(error => {
         // var errorCode = error.code;
