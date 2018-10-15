@@ -1,31 +1,25 @@
-import { Component,AfterViewInit,OnInit } from '@angular/core';
+import { Component,AfterViewInit,OnInit, OnChanges } from '@angular/core';
 import { CCuenta } from '../../Clases/Cuenta/CCuenta';
 import { CRotorPosicion } from '../../Clases/Enigma/CRotorPosicion';
 import { CEnigma } from '../../Clases/Enigma/CEnigma';
 import { CuentasService } from '../../Servicios/cuentas.service';
 import { Observable } from "rxjs";
+import {Cuenta} from "../../Servicios/model"
+
 @Component({
 	selector: 'app-cuentas',
 	templateUrl: './cuentas.component.html',
 	styleUrls: ['./cuentas.component.scss']
 })
 
-export class CuentasComponent implements AfterViewInit, OnInit {
+export class CuentasComponent implements AfterViewInit, OnInit,OnChanges {
 	public showPinModal: boolean = false;
-	cuentas: Observable<CCuenta[]>;
-	private cuentast: Array<CCuenta>;
-	constructor(private cuentasServicio: CuentasService) {
-	this.cuentast=[	
-		new CCuenta('Facebook', 'USUARIOA', 'CONTRAA'),
-		new CCuenta('Spotify', 'USUARIOB', 'CONTRAB'),
-		new CCuenta('Twitter', 'USUARIOC', 'CONTRAC'),
-		new CCuenta('Seguridad', 'USUARIOD', 'CONTRAD'),
-		new CCuenta('UPC', 'u20161c963@upc.edu.pe', 'contraseñaGenérica'),
-		new CCuenta('UPC', 'u20161c808@upc.edu.pe', 'monkeyGoHappy'),
-		new CCuenta('UPC', 'u20161c135@upc.edu.pe', 'contraseñaInventada')
-	];
+	cuentas: Observable<Cuenta[]>;
+	//private cuentast: Array<CCuenta>;
+	constructor(private cuentasServicio: CuentasService) {}
+	ngAfterViewInit(){
+		this.cuentas = this.cuentasServicio.getCuentas();
 	}
-	ngAfterViewInit(){}
 	ngOnInit()
 	{
 		this.cuentas = this.cuentasServicio.getCuentas();
@@ -34,6 +28,10 @@ export class CuentasComponent implements AfterViewInit, OnInit {
 		let rotorII: number = asd.transformar("123456");
 		let rotorIII: number = asd.transformar("123456");
 		let enigma: CEnigma = CEnigma.getInstancia(rotorI, rotorII, rotorIII);
+	}
+	ngOnChanges()
+	{
+		this.cuentas = this.cuentasServicio.getCuentas();
 	}
 
 }

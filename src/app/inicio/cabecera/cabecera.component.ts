@@ -33,6 +33,7 @@ export class CabeceraComponent implements OnInit {
         {
         console.log("ya existe");
         this.router.navigate(['cuentas']);
+      //  location.reload();
         }
       })
       .catch(error => {

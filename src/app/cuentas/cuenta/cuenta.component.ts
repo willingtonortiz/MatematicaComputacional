@@ -3,6 +3,7 @@ import { CEnigma } from '../../Clases/Enigma/CEnigma';
 import { CCuenta } from '../../Clases/Cuenta/CCuenta';
 import { Router } from '@angular/router';
 import { PinService } from '../../Servicios/pin.service';
+//import {Cuenta } 
 
 @Component({
 	selector: 'app-cuenta',
@@ -12,12 +13,10 @@ import { PinService } from '../../Servicios/pin.service';
 
 export class CuentaComponent implements OnInit {
 	@Input('id') id: number;
-	@Input('cuenta') cuenta: CCuenta;
-
-	private tipo: string;
-	private usuario: string;
-	private contrasenia: string;
-
+	@Input('tipo') tipo:string;
+	@Input('usuario') usuario:string;
+	@Input('contrasenia') contrasenia:string;
+//	@Input('cuenta') cuenta: CCuenta;
 	private activo: boolean;
 	private escondido: boolean = true;
 	private enigma: CEnigma;
@@ -28,9 +27,7 @@ export class CuentaComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		this.tipo = this.cuenta.tipo;
-		this.usuario = this.cuenta.usuario;
-		this.contrasenia = this.cuenta.contrasenia;
+		
 		if (this.id === PinService.actual) {
 			this.desencriptar();
 			this.activo = true;
