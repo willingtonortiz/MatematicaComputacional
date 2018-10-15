@@ -16,10 +16,11 @@ import 'rxjs/add/operator/map';
 export class CuentasService {
  cuentasCollection: AngularFirestoreCollection<Cuenta>;
  cuentas:Observable<Cuenta[]>
- //cuentasdoc:AngularFirestoreDocument<Cuenta>
+ cuentasdoc:AngularFirestoreDocument<Cuenta>
+ route:string
 	constructor(private angularFireStore: AngularFirestore,private personaService:PersonaService) {
-		this.cuentasCollection = this.angularFireStore.collection('Cuentas', x => x.orderBy('usuario', 'asc'));
-		this.cuentas = this.cuentasCollection.stateChanges().map(
+		this.cuentasCollection = this.angularFireStore.collection(localStorage.getItem("uid"), x => x.orderBy('usuario', 'asc'));
+		this.cuentas = this.cuentasCollection.snapshotChanges().map(
       changes => {
         return changes.map(
           a => {
@@ -38,7 +39,7 @@ export class CuentasService {
 		return  this.cuentasCollection.valueChanges();
 		}
 		deleteUser(Cuenta) {
-		//	this.cuentasdoc = this.angularFireStore.doc(`Cuentas/${Cuenta.id}`);
-			//this.cuentasdoc .delete();
+			this.cuentasdoc = this.angularFireStore.doc(`Cuentas/${Cuenta.id}`);
+			this.cuentasdoc .delete();
 		}
 }

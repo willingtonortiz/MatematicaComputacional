@@ -25,6 +25,7 @@ export class CabeceraComponent implements OnInit {
         console.log("Logueo Correcto");
         this.personaService.uid=res.user.uid;
         this.personaService.nuevo=res.additionalUserInfo.isNewUser;
+        localStorage.setItem("uid", res.user.uid);
         if( this.personaService.nuevo)
         {
           this.router.navigate(['cuentas', 'pin']);
@@ -33,7 +34,7 @@ export class CabeceraComponent implements OnInit {
         {
         console.log("ya existe");
         this.router.navigate(['cuentas']);
-      //  location.reload();
+        //location.reload();
         }
       })
       .catch(error => {
