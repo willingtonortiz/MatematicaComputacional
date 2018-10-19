@@ -14,6 +14,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CuentasService } from './Servicios/cuentas.service';
 import {AuthenticationService}  from './Servicios/authentication.service';
+import {PersonaService} from './Servicios/persona.service'
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +28,7 @@ import {AuthenticationService}  from './Servicios/authentication.service';
     BrowserModule,
     AppRoutingModule,
   ],
-  providers: [AuthenticationService,CuentasService],
+  providers: [AuthenticationService,CuentasService,PersonaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

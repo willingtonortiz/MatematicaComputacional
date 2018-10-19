@@ -30,12 +30,12 @@ export class PinComponent implements AfterViewInit {
 	constructor(
 		private router: Router,private personaService:PersonaService
 	) { 
-		this.nuevo=personaService.nuevo;
-		console.log(this.nuevo);
+		console.log(this.nuevo=Boolean(localStorage.getItem("nuevo")));
 	}
 
 
 	ngAfterViewInit(){
+		this.nuevo=Boolean(localStorage.getItem("nuevo"));
 		this.nameElementRef1.nativeElement.focus();
 	}
 	focusNext2(){

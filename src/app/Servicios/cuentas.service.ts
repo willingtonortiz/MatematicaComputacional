@@ -19,27 +19,29 @@ export class CuentasService {
  cuentasdoc:AngularFirestoreDocument<Cuenta>
  route:string
 	constructor(private angularFireStore: AngularFirestore,private personaService:PersonaService) {
+		console.log(localStorage.getItem("uid"));
 		this.cuentasCollection = this.angularFireStore.collection(localStorage.getItem("uid"), x => x.orderBy('usuario', 'asc'));
-		this.cuentas = this.cuentasCollection.snapshotChanges().map(
-      changes => {
-        return changes.map(
-          a => {
-            const data = a.payload.doc.data() as Cuenta;
-            data.id = this.personaService.uid;
-            return data;
-          });
+		
+				// this.cuentas = this.cuentasCollection.snapshotChanges().map(
+    //   changes => {
+    //     return changes.map(
+    //       a => {
+    //         const data = a.payload.doc.data() as Cuenta;
+    //         data.id = this.personaService.uid;
+    //         return data;
+    //       });
 
-      });
+    //   });
 	 }
 	 addCuenta(cuenta:Cuenta) {
 		this.cuentasCollection.add(cuenta);
 	  }
 
-	  getCuentas(): Observable<Cuenta[]> {
-		return  this.cuentasCollection.valueChanges();
+	  getCuentas() {
+		return  this.cuentasCollection.snapshotChanges();
 		}
-		deleteUser(Cuenta) {
-			this.cuentasdoc = this.angularFireStore.doc(`Cuentas/${Cuenta.id}`);
+		deleteCuenta(id) {
+			this.cuentasdoc = this.angularFireStore.doc(`${localStorage.getItem("uid")}/${id}`);
 			this.cuentasdoc .delete();
 		}
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthenticationService} from '../../Servicios/authentication.service'
 import {PersonaService} from '../../Servicios/persona.service'
+import {CuentasService} from '../../Servicios/cuentas.service'
 import { Router } from "@angular/router";
 @Component({
   selector: 'app-cabecera',
@@ -12,6 +13,7 @@ export class CabeceraComponent implements OnInit {
   constructor( private authenticationService: AuthenticationService,
     private router: Router,
     private personaService:PersonaService,
+    
 
   ) { }
 
@@ -26,7 +28,8 @@ export class CabeceraComponent implements OnInit {
         this.personaService.uid=res.user.uid;
         this.personaService.nuevo=res.additionalUserInfo.isNewUser;
         localStorage.setItem("uid", res.user.uid);
-        if( this.personaService.nuevo)
+        localStorage.setItem("nuevo", String(res.additionalUserInfo.isNewUser));
+        if(this.personaService.nuevo)
         {
           this.router.navigate(['cuentas', 'pin']);
         }
