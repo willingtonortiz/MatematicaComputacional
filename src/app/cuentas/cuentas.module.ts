@@ -9,6 +9,8 @@ import { CuentaComponent } from './cuenta/cuenta.component';
 import { CuentasComponent } from './cuentas/cuentas.component';
 import { AgregarCuentaComponent } from './agregar-cuenta/agregar-cuenta.component';
 import { PinComponent } from './pin/pin.component';
+import { CuentasService } from '../Servicios/cuentas.service';
+import {PersonaService}  from '../Servicios/persona.service';
 
 @NgModule({
     imports: [
@@ -21,7 +23,8 @@ import { PinComponent } from './pin/pin.component';
         CuentasComponent,
         AgregarCuentaComponent,
         PinComponent,
-    ]
+    ],
+    providers: [CuentasService],
 })
 
 export class CuentasModule { }

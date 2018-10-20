@@ -1,39 +1,47 @@
 import { Injectable } from '@angular/core';
-import { CCuenta } from '../Clases/Cuenta/CCuenta';
+import { AngularFirestoreDocument } from 'angularfire2/firestore';
+import {
+	AngularFirestore,
+	AngularFirestoreCollection
+  } from "angularfire2/firestore";
+import {PersonaService} from './persona.service'
+import { Observable } from "rxjs";
+import {Cuenta} from "./model"
+import 'rxjs/add/operator/map';
 
 @Injectable({
 	providedIn: 'root'
 })
 
 export class CuentasService {
+ cuentasCollection: AngularFirestoreCollection<Cuenta>;
+ cuentas:Observable<Cuenta[]>
+ cuentasdoc:AngularFirestoreDocument<Cuenta>
+ route:string
+	constructor(private angularFireStore: AngularFirestore,private personaService:PersonaService) {
+		console.log(localStorage.getItem("uid"));
+		this.cuentasCollection = this.angularFireStore.collection(localStorage.getItem("uid"), x => x.orderBy('usuario', 'asc'));
+		
+				// this.cuentas = this.cuentasCollection.snapshotChanges().map(
+    //   changes => {
+    //     return changes.map(
+    //       a => {
+    //         const data = a.payload.doc.data() as Cuenta;
+    //         data.id = this.personaService.uid;
+    //         return data;
+    //       });
 
-	// private cuentas: Array<CCuenta> = [
-	// 	new CCuenta('Facebook', 'USUARIOA', 'CONTRAA'),
-	// 	new CCuenta('Spotify', 'USUARIOB', 'CONTRAB'),
-	// 	new CCuenta('Twitter', 'USUARIOC', 'CONTRAC'),
-	// 	new CCuenta('Seguridad', 'USUARIOD', 'CONTRAD'),
-	// 	new CCuenta('UPC', 'u20161c963@upc.edu.pe', 'contraseñaGenérica'),
-	// 	new CCuenta('UPC', 'u20161c808@upc.edu.pe', 'monkeyGoHappy'),
-	// 	new CCuenta('UPC', 'u20161c135@upc.edu.pe', 'contraseñaInventada')
-	// ];
+    //   });
+	 }
+	 addCuenta(cuenta:Cuenta) {
+		this.cuentasCollection.add(cuenta);
+	  }
 
-	private cuentas: Array<CCuenta> = [
-		new CCuenta('Facebook', '>μS_￦ûÙì', '°ÑnÌ￦"Ã'),
-		new CCuenta('Spotify', '>μS_￦ûÙ_', '°ÑnÌ￦"{'),
-		new CCuenta('Twitter', '>μS_￦ûÙp', '°ÑnÌ￦"Ä'),
-		new CCuenta('Seguridad', '>μS_￦ûÙ{', '°ÑnÌ￦"b'),
-		new CCuenta('UPC', 'W¬è0rr]ÃívØÄL^jïæ¿Ö¤#', 'Î\'Nk6ÜæöÒLèÀ}=¥}5£'),
-		new CCuenta('UPC', 'W¬è0rr]ê÷€ØÄL^jïæ¿Ö¤#', 'À\'NtÁ`Ωè|Lß&ô'),
-		new CCuenta('UPC', 'W¬è0rr]Æ4ëØÄL^jïæ¿Ö¤#', 'Î\'Nk6ÜæöÒL£"úÇDWÎËë')
-	];
-
-	public getCuentas(): Array<CCuenta> {
-		return this.cuentas;
-	}
-
-	public addCuenta(item: CCuenta): void {
-		this.cuentas.push(item);
-	}
-
-	constructor() { }
+	  getCuentas() {
+		return  this.cuentasCollection.snapshotChanges();
+		}
+		deleteCuenta(id) {
+			this.cuentasdoc = this.angularFireStore.doc(`${localStorage.getItem("uid")}/${id}`);
+			this.cuentasdoc .delete();
+		}
 }

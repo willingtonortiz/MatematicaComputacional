@@ -2,7 +2,9 @@ import { Component, OnInit } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { Router } from "@angular/router";
 import { CuentasService } from "../../Servicios/cuentas.service";
+import { PersonaService } from "../../Servicios/persona.service";
 import { CCuenta } from "../../Clases/Cuenta/CCuenta";
+import {Cuenta} from "../../Servicios/model"
 
 @Component({
 	selector: "app-agregar-cuenta",
@@ -11,8 +13,13 @@ import { CCuenta } from "../../Clases/Cuenta/CCuenta";
 })
 export class AgregarCuentaComponent implements OnInit {
 
-	constructor(private router: Router, private cuentasServicio: CuentasService) { }
-
+	constructor(private router: Router, private cuentasServicio: CuentasService,private personaservice:PersonaService) { }
+	cuenta : Cuenta=
+	{
+		tipo:"",
+		usuario:"",
+		contrasenia:"",
+	}
 	ngOnInit() {
 	}
 
@@ -24,13 +31,14 @@ export class AgregarCuentaComponent implements OnInit {
 			alert("Debe llenar todos los campos");
 		}
 		else {
-			let item: CCuenta = new CCuenta(
-				form.value.tipo,
-				form.value.usuario,
-				form.value.contrasenia
-			);
-			this.cuentasServicio.addCuenta(item);
+			
+				this.cuenta.tipo=form.value.tipo,
+				this.cuenta.usuario=form.value.usuario,
+				this.cuenta.contrasenia=form.value.contrasenia
+				this.cuenta.id=this.personaservice.uid;
+			this.cuentasServicio.addCuenta(this.cuenta);
 			this.router.navigate(['cuentas', 'inicio']);
 		}
 	}
+
 }

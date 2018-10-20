@@ -3,6 +3,8 @@ import { CEnigma } from '../../Clases/Enigma/CEnigma';
 import { CCuenta } from '../../Clases/Cuenta/CCuenta';
 import { Router } from '@angular/router';
 import { PinService } from '../../Servicios/pin.service';
+import { CuentasService } from '../../Servicios/cuentas.service';
+//import {Cuenta } 
 
 @Component({
 	selector: 'app-cuenta',
@@ -12,25 +14,21 @@ import { PinService } from '../../Servicios/pin.service';
 
 export class CuentaComponent implements OnInit {
 	@Input('id') id: number;
-	@Input('cuenta') cuenta: CCuenta;
-
-	private tipo: string;
-	private usuario: string;
-	private contrasenia: string;
-
+	@Input('tipo') tipo:string;
+	@Input('usuario') usuario:string;
+	@Input('contrasenia') contrasenia:string;
+//	@Input('cuenta') cuenta: CCuenta;
 	private activo: boolean;
 	private escondido: boolean = true;
 	private enigma: CEnigma;
 
-	constructor(private router: Router) {
+	constructor(private router: Router,private cuentaservicio:CuentasService) {
 		this.activo = false;
 		this.enigma = CEnigma.getInstancia(0, 0, 0);
 	}
 
 	ngOnInit() {
-		this.tipo = this.cuenta.tipo;
-		this.usuario = this.cuenta.usuario;
-		this.contrasenia = this.cuenta.contrasenia;
+		
 		if (this.id === PinService.actual) {
 			this.desencriptar();
 			this.activo = true;
@@ -44,6 +42,10 @@ export class CuentaComponent implements OnInit {
 	public desencriptar() {
 		this.usuario = this.enigma.cifrarTexto(this.usuario);
 		this.contrasenia = this.enigma.cifrarTexto(this.contrasenia);
+	}
+	public eliminar() {
+		console.log(this.id);
+		this.cuentaservicio.deleteCuenta(this.id );
 	}
 
 	public procesarPin() {
