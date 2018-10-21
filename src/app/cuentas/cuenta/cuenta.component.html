@@ -18,32 +18,47 @@
 			<h2>Contraseña o PIN:</h2>
 			<h2 class="contrasenia encript-data">{{contrasenia}}</h2>
 		</div>
-		<div class="fila">
-			<button (click)="procesarPin()">Desencriptar</button>
+		<div class="fila" id="options-buttons">
+			<button id="eliminar" (click)="eliminar()">
+				<img src="../../../assets/Borrar-Icon.png" alt="">
+
+			</button>
+			<button id="editar">
+				<img src="../../../assets/Editar-Icon.png" alt="">
+			</button>
+			<button id="desencriptar" (click)="procesarPin()">
+				<img src="../../../assets/Desencriptar-boton.png" alt="">
+			</button>
 		</div>
-		<div class="fila">
-			<button (click)="eliminar()">Eliminar</button>
-		</div>
+
 	</div>
 	<div class="container-showup1366 .laptop-container">
 		<div class="tipo-cuenta-img">
 			<img src="../../../assets/google Icon.png" alt="">
 
 		</div>
-		<div class="descripcion-cuenta infocuenta"> 
+		<div class="descripcion-cuenta infocuenta">
 			Cuenta de {{tipo}}
 		</div>
-		<div class="usuario-correo infocuenta"> 
+		<div class="usuario-correo infocuenta">
 			{{usuario}}
 		</div>
-		<div class="contrasenia-PIN infocuenta"> 
+		<div class="contrasenia-PIN infocuenta">
 			{{contrasenia}}
 		</div>
 		<div class="estado infocuenta">
 			<p class="candado"><i class="fas fa-lock"></i>Protegido</p>
 		</div>
 		<div class="accion infocuenta">
-			Desencriptar
+			<button>
+				<img src="../../../assets/Borrar-Icon.png" alt="">
+			</button>
+			<button>
+				<img src="../../../assets/Editar-Icon.png" alt="">
+			</button>
+			<button>
+				<img src="../../../assets/EncripData.png" alt="">
+			</button>
 		</div>
 
 	</div>

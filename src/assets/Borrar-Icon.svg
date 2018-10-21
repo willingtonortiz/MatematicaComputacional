@@ -1,0 +1,13 @@
+<svg id="Borrar-Icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 57.936 73.298">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #8993be;
+      }
+    </style>
+  </defs>
+  <path id="Path_66" data-name="Path 66" class="cls-1" d="M134.073,8.631h-9.787V2.271A2.274,2.274,0,0,0,121.973,0a.346.346,0,0,0-.247.083A.315.315,0,0,0,121.56,0H98.229a2.239,2.239,0,0,0-2.271,2.271v6.36H86.13a4.936,4.936,0,0,0-5,5V21.8h4.336V68.342A4.866,4.866,0,0,0,90.424,73.3h39.354a4.9,4.9,0,0,0,5-4.955V21.8h4.295V13.628A4.936,4.936,0,0,0,134.073,8.631ZM100.5,4.542h19.2V8.631H100.5Zm29.691,63.8c0,.29-.124.413-.413.413H90.424c-.289,0-.413-.123-.413-.413V21.8h40.18Zm4.295-51.081H85.717V13.628c0-.289.124-.455.413-.455h47.943c.289,0,.413.166.413.455Z" transform="translate(-81.133)"/>
+  <rect id="Rectangle_37" data-name="Rectangle 37" class="cls-1" width="4.584" height="37.577" transform="translate(37.289 27.131)"/>
+  <rect id="Rectangle_38" data-name="Rectangle 38" class="cls-1" width="4.584" height="37.577" transform="translate(26.718 27.131)"/>
+  <rect id="Rectangle_39" data-name="Rectangle 39" class="cls-1" width="4.584" height="37.577" transform="translate(16.146 27.131)"/>
+</svg>

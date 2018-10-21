@@ -2,7 +2,7 @@
     width: 100%;
     height: 100vh;
     //background: linear-gradient(135deg,#272a35,#222130);
-    background: rgba(27, 27, 29,.8);
+    background: rgba(27, 27, 29,1);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,16 +10,32 @@
     top: 0;
     left: 0;
     .form-pin-container{
+
+        #generar-pin{
+            background: transparent;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 16px;
+            border: none;
+            color: #5DF1B1;
+            margin-top: 50px;
+            //border-radius: 5px;
+            //padding: 7px 14px;
+
+        }
+
         width: 60%;
-        h1{
+        h1,p{
             color: #fafafa;
             text-align: center;
+            font-family: 'Open Sans', sans-serif;
+            margin: 10px 0;
+
         }
         .coleccion-inputs-pin{
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 20px 0;
+            margin: 50px 0;
             .input-pincode{
                 background:transparent;
                 border: none;

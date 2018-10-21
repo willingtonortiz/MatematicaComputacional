@@ -61,7 +61,7 @@
 
 		.fila {
 			display: inherit;
-			flex-flow: row nowrap;
+			flex-flow: column nowrap;
 			justify-content: space-between;
 			align-items: center;
 			width: 80%;
@@ -80,6 +80,18 @@
 				color: #5DF1B1;
 			}
 		}
+		#options-buttons {
+			flex-flow: row nowrap;
+			margin-top: 20px;
+			button{
+				background: transparent;
+				border: none;
+				img{
+					max-width: 20px;
+				}
+			}
+		}
+
 	}
 
 	.contenido[hidden] {
@@ -149,9 +161,8 @@
 
 			#descr-cuenta {
 				font-size: 22px;
-
-				#descr-img { text-align: left; }
-				img { max-width: 28px;}
+				#descr-img 	{ text-align: left; }
+				img 		{ max-width: 28px;}
 			}
 		}
 
@@ -159,9 +170,15 @@
 			.fila {
 				h2 { font-size: 19px; }
 			}
+			#options-buttons{
+				button{
+					img{
+						max-width: 30px;
+					}
+				}
+			}
 		}
 	}
-
 }
 
 @media only screen and (min-width: 1366px){
@@ -188,6 +205,19 @@
 					}
 				}
 			}
+
+			.accion{
+				
+				button{
+					background: transparent;
+					border: none;
+					margin: 0 10px;
+					img{
+						max-width: 20px;
+					}
+				}
+			}
+
 			.tipo-cuenta-img{
 				display: flex;
 				justify-content: center;
