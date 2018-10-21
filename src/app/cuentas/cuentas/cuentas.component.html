@@ -14,12 +14,15 @@
 		<h2 class="itemUp1366 header-table">Estado</h2>
 		<h2 class="itemUp1366 header-table">Acción</h2>
 	</div>
-	
+
 	<div class="cuentas">
 		<!-- <app-cuenta *ngFor="let cuenta of cuentas; let i = index " 
 		[cuenta]="cuenta" [id]="i"></app-cuenta> -->
-		<app-cuenta *ngFor="let cuenta of cuentas ; let i = index "
-		 [tipo]="cuenta.tipo" [usuario]="cuenta.usuario" [contrasenia]="cuenta.contrasenia" [id]="cuenta.id"></app-cuenta>
+		<!-- <app-cuenta *ngFor="let cuenta of cuentas; let i = index " [tipo]="cuenta.tipo" [usuario]="cuenta.usuario"
+		 [contrasenia]="cuenta.contrasenia" [id]="cuenta.id"></app-cuenta> -->
+
+		<app-cuenta *ngFor="let cuenta of cuentas" [tipo]="cuenta.tipo" [usuario]="cuenta.usuario" 
+		[contrasenia]="cuenta.contrasenia" [id]="cuenta.id"></app-cuenta>
 	</div>
 
 	<app-pin *ngIf="showPinModal"></app-pin>

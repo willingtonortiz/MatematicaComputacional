@@ -1,7 +1,7 @@
 
 export interface Cuenta {
-  tipo:string;
-  usuario:string;
-  contrasenia:string;
-  id?:string;
+	id?: string;
+	tipo: string;
+	usuario: string;
+	contrasenia: string;
 }

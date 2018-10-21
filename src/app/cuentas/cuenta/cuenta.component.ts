@@ -13,22 +13,26 @@ import { CuentasService } from '../../Servicios/cuentas.service';
 })
 
 export class CuentaComponent implements OnInit {
-	@Input('id') id: number;
-	@Input('tipo') tipo:string;
-	@Input('usuario') usuario:string;
-	@Input('contrasenia') contrasenia:string;
-//	@Input('cuenta') cuenta: CCuenta;
+
+	@Input('id') id: string;
+	@Input('tipo') tipo: string;
+	@Input('usuario') usuario: string;
+	@Input('contrasenia') contrasenia: string;
+
+	// @Input('cuenta') cuenta: CCuenta;
 	private activo: boolean;
 	private escondido: boolean = true;
 	private enigma: CEnigma;
 
-	constructor(private router: Router,private cuentaservicio:CuentasService) {
+	constructor(
+		private router: Router,
+		private cuentaservicio: CuentasService
+	) {
 		this.activo = false;
 		this.enigma = CEnigma.getInstancia(0, 0, 0);
 	}
 
 	ngOnInit() {
-		
 		if (this.id === PinService.actual) {
 			this.desencriptar();
 			this.activo = true;
@@ -44,8 +48,8 @@ export class CuentaComponent implements OnInit {
 		this.contrasenia = this.enigma.cifrarTexto(this.contrasenia);
 	}
 	public eliminar() {
-		console.log(this.id);
-		this.cuentaservicio.deleteCuenta(this.id );
+		//console.log(this.id);
+		this.cuentaservicio.deleteCuenta(this.id);
 	}
 
 	public procesarPin() {

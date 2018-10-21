@@ -8,19 +8,26 @@
 			<input #pinref2 [(ngModel)]="pinfieldcode2" (input)="focusNext3()" type="text" maxlength="1" class="input-pincode">
 			<input #pinref3 [(ngModel)]="pinfieldcode3" (input)="focusNext4()" type="text" maxlength="1" class="input-pincode">
 			<input #pinref4 [(ngModel)]="pinfieldcode4" (input)="focusNext5()" type="text" maxlength="1" class="input-pincode">
-			<input #pinref5 [(ngModel)]="pinfieldcode5"(input)="focusNext6()" type="text" maxlength="1" class="input-pincode">
+			<input #pinref5 [(ngModel)]="pinfieldcode5" (input)="focusNext6()" type="text" maxlength="1" class="input-pincode">
 			<input #pinref6 [(ngModel)]="pinfieldcode6" type="text" maxlength="1" class="input-pincode">
 		</div>
-			
-		<div *ngIf="nuevo">
-				<div class="button-send-pin">
-						<button (click)="generarPin()" id="generar-pin">Generar Pin</button>
-				</div>
-		</div>
-		<div *ngIf="!nuevo">
-				<div class="button-send-pin">
-						<button (click)="procesarPin()" id="send-pin">Enviar</button>
-				</div>
+
+		<!-- <div *ngIf="nuevo">
+			<div class="button-send-pin">
+				<button (click)="generarPin()" id="generar-pin">Generar Pin</button>
+			</div>
+		</div> -->
+
+		<!-- <div *ngIf="!nuevo">
+			<div class="button-send-pin">
+				<button (click)="procesarPin()" id="send-pin">Enviar</button>
+			</div>
+		</div> -->
+
+		<div>
+			<div class="button-send-pin">
+				<button (click)="procesarPin()" id="send-pin">Enviar</button>
+			</div>
 		</div>
 
 	</div>
