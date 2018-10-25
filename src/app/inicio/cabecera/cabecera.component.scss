@@ -16,8 +16,41 @@
 		margin-bottom: 4rem;
 		font-family: 'Montserrat', sans-serif;
 	}
+	.instrucciones{
+		position: absolute;
+		top: 65%;
+		
+		font-family: 'Open Sans', sans-serif;
+		& > div{
+			display: flex;
+			justify-content: flex-start;
+			align-items: center;
+			p{
+				margin: 0 20px; 
+				
+			
+			}
+		}
+		h2{
+			color: #fff;
+			text-align: center;
+			
+		}
+		.encriptar{
+			color: #FCF759;
+		}
+		.editar{
+			color: #64FFF5;
+		}
+		.eliminar{
+			color:#8993BE;
+		}
+
+		
+	}
 
 }
+
 
 //		======== ======== ANDROID DEVICE ======== ========
 
@@ -25,19 +58,33 @@
 @media only screen and (min-width:320px) {
 	#btn-login {
 		width: 150px;
-		padding: 5px 20px;
-		background: rgba(255, 255, 255, 1);
+		padding: 10px 20px;
+		background: rgba(95, 100, 122,.25);
 		border: none;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		border-radius: 15px;
-		color: #222222;
+		border-radius: 3px;
+		color: #eeeeee;
 	}
 
 	#google-icon {
 		max-width: 18%;
 	}
+
+	.instrucciones{
+		margin-top: 20px;
+		img{
+			max-width: 20px;
+		}
+		& > div{
+			margin: 20px 0;
+			p{
+				font-size: 13px;
+			}
+		}
+	}
+
 }
 
 
@@ -45,13 +92,16 @@
 
 
 @media only screen and (min-width:768px) {
+
+	
+
 	#btn-login {
 		width: 250px;
 		padding: 10px 20px;
-		background: rgba(255, 255, 255, 1);
+		background: rgba(95, 100, 122,.25);
 		border: none;
-		border-radius: 66px;
-		color: #3a3a3a;
+		border-radius: 3px;
+		color: #eeeeee;
 		font-size: 18px;
 		justify-content: center;
 	}
@@ -63,6 +113,18 @@
 	.contenedor{
 		h1{
 			font-size: 64px;
+		}
+	}
+	.instrucciones{
+		margin-top: 20px;
+		img{
+			max-width: 25px;
+		}
+		& > div{
+			margin: 25px 0;
+			p{
+				font-size: 18px;
+			}
 		}
 	}
 }
