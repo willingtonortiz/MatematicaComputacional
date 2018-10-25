@@ -13,9 +13,9 @@ export class CEnigma {
     private rotorIII: CRotor;
     private reflector: CReflector;
 
-    public static getInstancia(rotI: number, rotII: number, rotIII: number): CEnigma {
+    public static getInstancia(rotorI: number, rotorII: number, rotorIII: number): CEnigma {
         if (this.instancia === null) {
-            CEnigma.instancia = new CEnigma(rotIII, rotII, rotI);
+            CEnigma.instancia = new CEnigma(rotorIII, rotorII, rotorI);
         }
         return CEnigma.instancia;
     }

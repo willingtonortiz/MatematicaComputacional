@@ -1,9 +1,12 @@
 <div class="contenedor">
+
 	<div class="header">
+
 		<h1 id="header-text">p4ssw0rd</h1>
 		<img id="avatar" src="../../../assets/ui-face.jpeg" alt="">
 		<button id="add-button" routerLink="../agregar">+</button>
 		<button id="add-button-2" routerLink="../agregar">Añadir Datos</button>
+
 	</div>
 
 	<div class="titulo">
@@ -16,13 +19,8 @@
 	</div>
 
 	<div class="cuentas">
-		<!-- <app-cuenta *ngFor="let cuenta of cuentas; let i = index " 
-		[cuenta]="cuenta" [id]="i"></app-cuenta> -->
-		<!-- <app-cuenta *ngFor="let cuenta of cuentas; let i = index " [tipo]="cuenta.tipo" [usuario]="cuenta.usuario"
-		 [contrasenia]="cuenta.contrasenia" [id]="cuenta.id"></app-cuenta> -->
-
-		<app-cuenta *ngFor="let cuenta of cuentas" [tipo]="cuenta.tipo" [usuario]="cuenta.usuario" 
-		[contrasenia]="cuenta.contrasenia" [id]="cuenta.id"></app-cuenta>
+		<app-cuenta *ngFor="let cuenta of cuentas" [tipo]="cuenta.tipo" [usuario]="cuenta.usuario" [contrasenia]="cuenta.contrasenia"
+		 [id]="cuenta.id"></app-cuenta>
 	</div>
 
 	<app-pin *ngIf="showPinModal"></app-pin>

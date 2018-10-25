@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import { AuthenticationService } from '../../Servicios/authentication.service';
 import { PersonaService } from '../../Servicios/persona.service';
 import { Router } from "@angular/router";
@@ -10,10 +10,10 @@ import { Router } from "@angular/router";
 })
 
 export class CabeceraComponent {
-
 	constructor(
 		private authenticationService: AuthenticationService,
-		private router: Router
+		private router: Router,
+		private zone: NgZone
 	) { }
 
 	public loginWithGoogle(): void {
@@ -21,18 +21,8 @@ export class CabeceraComponent {
 			.signInWithGoogle()
 			.then(res => {
 				PersonaService.uid = res.user.uid;
-				// this.personaService.nuevo = res.additionalUserInfo.isNewUser;
 				PersonaService.nuevo = true;
-				// localStorage.setItem('uid', this.personaService.uid);
-				// localStorage.setItem('nuevo', String(this.personaService.nuevo));
-
-				// if (this.personaService.nuevo) {
-				// this.router.navigateByUrl("cuentas/pin");
-				this.router.navigate(["/cuentas", "pin"]);
-				// }
-				// else {
-				// this.router.navigate(['cuentas']);
-				// }
+				this.zone.run(() => { this.router.navigate(["/cuentas", "pin"]); });
 			})
 			.catch(error => {
 				console.log(error.message);

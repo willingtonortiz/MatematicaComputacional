@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { CuentasService } from '../../Servicios/cuentas.service';
+import { Component } from '@angular/core';
 import { Cuenta } from "../../Servicios/model"
-import { Router } from "@angular/router";
+import { CuentasService } from '../../Servicios/cuentas.service';
 import { PinService } from 'src/app/Servicios/pin.service';
 
 @Component({
@@ -11,14 +10,11 @@ import { PinService } from 'src/app/Servicios/pin.service';
 	providers: [CuentasService]
 })
 
-export class CuentasComponent implements OnInit {
+export class CuentasComponent {
 	public showPinModal: boolean = false;
 	public cuentas: Array<Cuenta> = null;
 
-	constructor(
-		private cuentasServicio: CuentasService,
-		private router: Router
-	) {
+	constructor(private cuentasServicio: CuentasService) {
 		this.cuentasServicio.getCuentas().subscribe((item) => {
 			this.cuentas = null;
 			this.cuentas = new Array<Cuenta>();
@@ -28,14 +24,5 @@ export class CuentasComponent implements OnInit {
 				this.cuentas.push(temp);
 			})
 		});
-		PinService.cuentas = this;
-	}
-
-	public metodo() {
-		console.log('Esto es un método');
-	}
-
-	ngOnInit(): void {
-
 	}
 }

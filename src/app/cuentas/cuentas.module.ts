@@ -18,18 +18,18 @@ import { PersonaService } from '../Servicios/persona.service';
     imports: [
         CommonModule,
         CuentasRoutingModule,
-        FormsModule,
+        FormsModule
     ],
     declarations: [
         CuentaComponent,
         CuentasComponent,
         AgregarCuentaComponent,
-        PinComponent,
+        PinComponent
     ],
     providers: [
         CuentasService,
         PersonaService
-    ],
+    ]
 })
 
 export class CuentasModule { }
