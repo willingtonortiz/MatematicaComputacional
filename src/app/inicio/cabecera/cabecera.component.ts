@@ -1,49 +1,31 @@
-import { Component, OnInit } from '@angular/core';
-import {AuthenticationService} from '../../Servicios/authentication.service'
-import {PersonaService} from '../../Servicios/persona.service'
-import {CuentasService} from '../../Servicios/cuentas.service'
+import { Component, NgZone } from '@angular/core';
+import { AuthenticationService } from '../../Servicios/authentication.service';
+import { PersonaService } from '../../Servicios/persona.service';
 import { Router } from "@angular/router";
+
 @Component({
-  selector: 'app-cabecera',
-  templateUrl: './cabecera.component.html',
-  styleUrls: ['./cabecera.component.scss']
+	selector: 'app-cabecera',
+	templateUrl: './cabecera.component.html',
+	styleUrls: ['./cabecera.component.scss'],
 })
-export class CabeceraComponent implements OnInit {
 
-  constructor( private authenticationService: AuthenticationService,
-    private router: Router,
-    private personaService:PersonaService,
-    
+export class CabeceraComponent {
+	constructor(
+		private authenticationService: AuthenticationService,
+		private router: Router,
+		private zone: NgZone
+	) { }
 
-  ) { }
-
-  ngOnInit() {
-  }
-  loginWithGoogle(): void {
-    console.log("Logueo");
-    this.authenticationService
-      .signInWithGoogle()
-      .then(res => {
-        console.log("Logueo Correcto");
-        this.personaService.uid=res.user.uid;
-        this.personaService.nuevo=res.additionalUserInfo.isNewUser;
-        localStorage.setItem("uid", res.user.uid);
-        localStorage.setItem("nuevo", String(res.additionalUserInfo.isNewUser));
-        if(this.personaService.nuevo)
-        {
-          this.router.navigate(['cuentas', 'pin']);
-        }
-        else
-        {
-        console.log("ya existe");
-        this.router.navigate(['cuentas']);
-        //location.reload();
-        }
-      })
-      .catch(error => {
-        // var errorCode = error.code;
-        console.log(error.message);
-      });
-  }
-
+	public loginWithGoogle(): void {
+		this.authenticationService
+			.signInWithGoogle()
+			.then(res => {
+				PersonaService.uid = res.user.uid;
+				PersonaService.nuevo = true;
+				this.zone.run(() => { this.router.navigate(["/cuentas", "pin"]); });
+			})
+			.catch(error => {
+				console.log(error.message);
+			});
+	}
 }

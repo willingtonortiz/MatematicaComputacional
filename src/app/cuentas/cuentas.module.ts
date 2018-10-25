@@ -9,22 +9,27 @@ import { CuentaComponent } from './cuenta/cuenta.component';
 import { CuentasComponent } from './cuentas/cuentas.component';
 import { AgregarCuentaComponent } from './agregar-cuenta/agregar-cuenta.component';
 import { PinComponent } from './pin/pin.component';
+
+/* SERVICIOS */
 import { CuentasService } from '../Servicios/cuentas.service';
-import {PersonaService}  from '../Servicios/persona.service';
+import { PersonaService } from '../Servicios/persona.service';
 
 @NgModule({
     imports: [
         CommonModule,
         CuentasRoutingModule,
-        FormsModule,
+        FormsModule
     ],
     declarations: [
         CuentaComponent,
         CuentasComponent,
         AgregarCuentaComponent,
-        PinComponent,
+        PinComponent
     ],
-    providers: [CuentasService],
+    providers: [
+        CuentasService,
+        PersonaService
+    ]
 })
 
 export class CuentasModule { }

@@ -8,9 +8,9 @@ import { PinComponent } from './pin/pin.component'
 /* COMPONENTES */
 
 const routes: Routes = [
-    { path: '', redirectTo: 'inicio', pathMatch: 'full', },
-    { path: 'inicio', component: CuentasComponent, },
-    { path: 'agregar', component: AgregarCuentaComponent, },
+    { path: '', redirectTo: 'inicio', pathMatch: 'full' },
+    { path: 'inicio', component: CuentasComponent },
+    { path: 'agregar', component: AgregarCuentaComponent },
     { path: 'pin', component: PinComponent }
 ];
 

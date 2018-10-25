@@ -4,13 +4,13 @@
 
 export const environment = {
   production: false,
-  firebase:{
-    apiKey: "AIzaSyDpQNUZJqNH7IzZ6kgHwcD0PM0_m7lL_Sk",
-    authDomain: "computacional-9f37c.firebaseapp.com",
-    databaseURL: "https://computacional-9f37c.firebaseio.com",
-    projectId: "computacional-9f37c",
-    storageBucket: "computacional-9f37c.appspot.com",
-    messagingSenderId: "101300166589"
+  firebase: {
+    apiKey: "AIzaSyAcO0iovFL2jVgAnWUvI4-OhIoQYdsQgPI",
+    authDomain: "neuria-d0943.firebaseapp.com",
+    databaseURL: "https://neuria-d0943.firebaseio.com",
+    projectId: "neuria-d0943",
+    storageBucket: "neuria-d0943.appspot.com",
+    messagingSenderId: "424362122714"
   }
 };
 
