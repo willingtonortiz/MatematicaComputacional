@@ -3,6 +3,7 @@ import { CEnigma } from '../../Clases/Enigma/CEnigma';
 import { Router } from '@angular/router';
 import { PinService } from '../../Servicios/pin.service';
 import { CuentasService } from '../../Servicios/cuentas.service';
+import { ArrCuentas } from 'src/app/Clases/Cuenta/ArrCuentas';
 
 @Component({
 	selector: 'app-cuenta',
@@ -11,11 +12,13 @@ import { CuentasService } from '../../Servicios/cuentas.service';
 })
 
 export class CuentaComponent implements OnInit {
+	// Id proporcionado por firebase
 	@Input('id') id: string;
 	@Input('tipo') tipo: string;
 	@Input('usuario') usuario: string;
 	@Input('contrasenia') contrasenia: string;
 
+	private arrCuentas: ArrCuentas;
 	private activo: boolean;
 	private escondido: boolean = true;
 	private enigma: CEnigma;
@@ -24,9 +27,9 @@ export class CuentaComponent implements OnInit {
 		private router: Router,
 		private cuentaservicio: CuentasService
 	) {
+		this.arrCuentas = ArrCuentas.getInstancia();
 		this.activo = false;
 		this.enigma = CEnigma.getInstancia(0, 0, 0);
-
 	}
 
 	ngOnInit() {
@@ -46,12 +49,19 @@ export class CuentaComponent implements OnInit {
 		this.contrasenia = this.enigma.cifrarTexto(this.contrasenia);
 	}
 
+	public editar() {
+		PinService.tipo = "editar";
+		this.arrCuentas.setActual(this.id);
+		this.router.navigate(['/cuentas', 'pin']);
+	}
+
 	public eliminar() {
 		this.cuentaservicio.deleteCuenta(this.id);
 	}
 
 	public procesarPin() {
 		if (!this.activo) {
+			PinService.tipo = "desencriptar";
 			PinService.intento = this.id;
 			this.router.navigate(['/cuentas', 'pin']);
 		}

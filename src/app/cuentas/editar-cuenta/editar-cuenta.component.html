@@ -1,0 +1,22 @@
+<div class="contenedor">
+	<form #frm="ngForm" (ngSubmit)="onSubmit(frm)">
+
+		<label>Tipo: {{ cuenta.tipo }}</label>
+		<select name="tipo" ngModel>
+			<option>Facebook</option>
+			<option>Twitter</option>
+			<option>Spotify</option>
+			<option>Youtube</option>
+			<option>UPC</option>
+			<option>Otros</option>
+		</select>
+
+		<label>Usuario: {{ cuenta.usuario }}</label>
+		<input name="usuario" type="text" ngModel>
+
+		<label>Contraseña: {{ cuenta.contrasenia }}</label>
+		<input name="contrasenia" type="text" ngModel>
+
+		<button>Editar</button>
+	</form>
+</div>

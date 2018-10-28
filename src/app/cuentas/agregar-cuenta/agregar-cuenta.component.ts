@@ -3,9 +3,10 @@ import { NgForm } from "@angular/forms";
 import { Router } from "@angular/router";
 import { CuentasService } from "../../Servicios/cuentas.service";
 import { PersonaService } from "../../Servicios/persona.service";
-// import { CCuenta } from "../../Clases/Cuenta/CCuenta";
-import { Cuenta } from "../../Servicios/model"
+// import { Cuenta } from "../../Servicios/model"
+
 import { CEnigma } from "src/app/Clases/Enigma/CEnigma";
+import { Cuenta } from "src/app/Clases/Cuenta/Cuenta";
 
 @Component({
 	selector: "app-agregar-cuenta",
@@ -15,13 +16,7 @@ import { CEnigma } from "src/app/Clases/Enigma/CEnigma";
 
 export class AgregarCuentaComponent {
 	private enigma: CEnigma;
-
-	public cuenta: Cuenta = {
-		id: '',
-		tipo: '',
-		usuario: '',
-		contrasenia: '',
-	}
+	public cuenta: Cuenta;
 
 	constructor(
 		private router: Router,
@@ -31,16 +26,17 @@ export class AgregarCuentaComponent {
 		this.enigma = CEnigma.getInstancia(0, 0, 0);
 	}
 
-	onSubmit(form: NgForm){
-		if (form.value.tipo === '' ||
-			// form.value.descripcion === '' ||
-			form.value.usuario === '' ||
-			form.value.contrasenia === '') {
+	onSubmit(form: NgForm) {
+		if (form.value.tipo === "" ||
+			// form.value.descripcion === "" ||
+			form.value.usuario === "" ||
+			form.value.contrasenia === "") {
 			alert('Debe llenar todos los campos');
 		}
 		else {
 			// Creando cuenta
-			this.cuenta.id = PersonaService.uid;
+			// this.cuenta.id = PersonaService.uid;
+			this.cuenta = new Cuenta;
 
 			this.cuenta.tipo = form.value.tipo;
 			this.cuenta.usuario = form.value.usuario;
@@ -51,7 +47,7 @@ export class AgregarCuentaComponent {
 			this.cuenta.contrasenia = this.enigma.cifrarTexto(this.cuenta.contrasenia);
 
 			// Se agrega la cuenta
-			this.cuentasServicio.addCuenta(this.cuenta);
+			this.cuentasServicio.addCuenta(this.cuenta.getSimple());
 			this.router.navigate(['cuentas']);
 		}
 	}

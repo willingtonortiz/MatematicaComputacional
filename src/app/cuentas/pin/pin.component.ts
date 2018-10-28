@@ -84,13 +84,20 @@ export class PinComponent implements AfterViewInit {
 		// Si no es nuevo, significa que el usuario desea desencriptar una cuenta
 		else {
 			if (cadena === PinService.pin) {
-				PinService.actual = PinService.intento;
+				switch (PinService.tipo) {
+					case "editar": {
+						this.router.navigate(["/cuentas", "editar"]);
+						return;
+					} break;
+					case "desencriptar": {
+						PinService.actual = PinService.intento;
+					} break;
+				}
 			}
 			else {
 				alert("Ingresó un pin incorrecto");
 			}
 		}
-
 		this.router.navigate(["cuentas"]);
 	}
 }

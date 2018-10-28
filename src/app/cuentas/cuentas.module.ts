@@ -13,6 +13,7 @@ import { PinComponent } from './pin/pin.component';
 /* SERVICIOS */
 import { CuentasService } from '../Servicios/cuentas.service';
 import { PersonaService } from '../Servicios/persona.service';
+import { EditarCuentaComponent } from './editar-cuenta/editar-cuenta.component';
 
 @NgModule({
     imports: [
@@ -24,7 +25,8 @@ import { PersonaService } from '../Servicios/persona.service';
         CuentaComponent,
         CuentasComponent,
         AgregarCuentaComponent,
-        PinComponent
+        PinComponent,
+        EditarCuentaComponent
     ],
     providers: [
         CuentasService,
