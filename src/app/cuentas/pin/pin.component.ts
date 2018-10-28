@@ -88,7 +88,7 @@ export class PinComponent implements AfterViewInit {
 					case "editar": {
 						this.router.navigate(["/cuentas", "editar"]);
 						return;
-					} break;
+					};
 					case "desencriptar": {
 						PinService.actual = PinService.intento;
 					} break;
