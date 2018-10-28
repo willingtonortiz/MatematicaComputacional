@@ -50,13 +50,13 @@
 			<p class="candado"><i class="fas fa-lock"></i>Protegido</p>
 		</div>
 		<div class="accion infocuenta">
-			<button>
+			<button (click)="eliminar()" >
 				<img src="../../../assets/Borrar-Icon.png" alt="">
 			</button>
-			<button>
+			<button (click) ="editar()">
 				<img src="../../../assets/Editar-Icon.png" alt="">
 			</button>
-			<button>
+			<button (click)="procesarPin()">
 				<img src="../../../assets/EncripData.png" alt="">
 			</button>
 		</div>
