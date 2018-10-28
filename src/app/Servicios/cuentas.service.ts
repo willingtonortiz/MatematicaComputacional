@@ -6,20 +6,20 @@ import {
 } from "angularfire2/firestore";
 import { PersonaService } from './persona.service'
 import { Observable } from "rxjs";
-import { Cuenta } from "./model"
-// import { map } from 'rxjs/add/operator/map';
+// import { Cuenta } from "./model";
+import { Cuenta } from '../Clases/Cuenta/Cuenta';
 
 @Injectable({
 	providedIn: 'root'
 })
 
 export class CuentasService {
-	cuentasCollection: AngularFirestoreCollection<Cuenta>;
-	cuentas: Observable<Cuenta[]>
-	cuentasdoc: AngularFirestoreDocument<Cuenta>
-	route: string
+	private cuentasCollection: AngularFirestoreCollection<Cuenta>;
+	private cuentas: Observable<Cuenta[]>
+	private cuentasdoc: AngularFirestoreDocument<Cuenta>
+	private route: string
 
-	constructor(
+	public constructor(
 		private angularFireStore: AngularFirestore
 	) {
 		// localStorage.getItem("uid");
@@ -27,15 +27,20 @@ export class CuentasService {
 		this.cuentasCollection = this.angularFireStore.collection(PersonaService.uid, x => x.orderBy('usuario', 'asc'));
 	}
 
-	addCuenta(cuenta: Cuenta) {
+	public addCuenta(cuenta: any) {
 		this.cuentasCollection.add(cuenta);
 	}
 
-	getCuentas() {
+	public getCuentas() {
 		return this.cuentasCollection.snapshotChanges();
 	}
 
-	deleteCuenta(id) {
+	public updateCuenta(cuenta: Cuenta) {
+		this.cuentasdoc = this.angularFireStore.doc(`${PersonaService.uid}/${cuenta.id}`);
+		this.cuentasdoc.update(cuenta);
+	}
+
+	public deleteCuenta(id) {
 		// this.cuentasdoc = this.angularFireStore.doc(`${localStorage.getItem("uid")}/${id}`);
 		this.cuentasdoc = this.angularFireStore.doc(`${PersonaService.uid}/${id}`);
 		this.cuentasdoc.delete();

@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { Cuenta } from "../../Servicios/model"
+// import { Cuenta } from "../../Servicios/model"
+import { Cuenta } from 'src/app/Clases/Cuenta/Cuenta';
 import { CuentasService } from '../../Servicios/cuentas.service';
-import { PinService } from 'src/app/Servicios/pin.service';
+import { ArrCuentas } from 'src/app/Clases/Cuenta/ArrCuentas';
+// import { PinService } from 'src/app/Servicios/pin.service';
 
 @Component({
 	selector: 'app-cuentas',
@@ -11,18 +13,24 @@ import { PinService } from 'src/app/Servicios/pin.service';
 })
 
 export class CuentasComponent {
-	public showPinModal: boolean = false;
-	public cuentas: Array<Cuenta> = null;
+	private showPinModal: boolean = false;
+	private cuentas: Array<Cuenta> = null;
+	private arrCuentas: ArrCuentas = null;
 
 	constructor(private cuentasServicio: CuentasService) {
-		this.cuentasServicio.getCuentas().subscribe((item) => {
+		this.arrCuentas = ArrCuentas.getInstancia();
+
+		this.cuentasServicio.getCuentas().subscribe((items) => {
 			this.cuentas = null;
 			this.cuentas = new Array<Cuenta>();
-			item.forEach((data: any) => {
+			items.forEach((data: any) => {
 				let temp = data.payload.doc.data() as Cuenta;
 				temp.id = data.payload.doc.id;
 				this.cuentas.push(temp);
 			})
+
+			this.arrCuentas.setCuentas(this.cuentas);
 		});
+
 	}
 }
