@@ -15,7 +15,7 @@ import { ArrCuentas } from 'src/app/Clases/Cuenta/ArrCuentas';
 
 export class EditarCuentaComponent implements OnInit {
 	private arrCuentas: ArrCuentas;
-	private cuenta: Cuenta;
+	public cuenta: Cuenta;
 	private enigma: CEnigma;
 
 	constructor(private router: Router,

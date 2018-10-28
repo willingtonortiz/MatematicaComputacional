@@ -12,12 +12,12 @@ import { CEnigma } from "src/app/Clases/Enigma/CEnigma";
 })
 
 export class PinComponent implements AfterViewInit {
-	private pinfieldcode1: string = "";
-	private pinfieldcode2: string = "";
-	private pinfieldcode3: string = "";
-	private pinfieldcode4: string = "";
-	private pinfieldcode5: string = "";
-	private pinfieldcode6: string = "";
+	public pinfieldcode1: string = "";
+	public pinfieldcode2: string = "";
+	public pinfieldcode3: string = "";
+	public pinfieldcode4: string = "";
+	public pinfieldcode5: string = "";
+	public pinfieldcode6: string = "";
 	@ViewChild("pinref1") nameElementRef1: ElementRef;
 	@ViewChild("pinref2") nameElementRef2: ElementRef;
 	@ViewChild("pinref3") nameElementRef3: ElementRef;

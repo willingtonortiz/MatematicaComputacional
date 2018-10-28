@@ -13,8 +13,8 @@ import { ArrCuentas } from 'src/app/Clases/Cuenta/ArrCuentas';
 })
 
 export class CuentasComponent {
-	private showPinModal: boolean = false;
-	private cuentas: Array<Cuenta> = null;
+	public showPinModal: boolean = false;
+	public cuentas: Array<Cuenta> = null;
 	private arrCuentas: ArrCuentas = null;
 
 	constructor(private cuentasServicio: CuentasService) {

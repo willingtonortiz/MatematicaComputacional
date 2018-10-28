@@ -20,7 +20,7 @@ export class CuentaComponent implements OnInit {
 
 	private arrCuentas: ArrCuentas;
 	private activo: boolean;
-	private escondido: boolean = true;
+	public escondido: boolean = true;
 	private enigma: CEnigma;
 
 	constructor(
