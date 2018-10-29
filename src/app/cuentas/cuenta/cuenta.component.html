@@ -5,18 +5,18 @@
 			<div id="descr-img">
 				<img src="../../../assets/google Icon.png" alt="">
 			</div>
-			<p>Cuenta de {{tipo}}</p>
+			<p>Cuenta de {{cuenta.tipo}}</p>
 		</h2>
 		<button class="botonToggle" (click)="toggleCuenta()"></button>
 	</div>
 	<div class=" contenido down1366" [hidden]="escondido">
 		<div class="fila">
 			<h2>Usuario o Correo:</h2>
-			<h2 class="usuario encript-data">{{usuario}}</h2>
+			<h2 class="usuario encript-data">{{cuenta.usuario}}</h2>
 		</div>
 		<div class="fila">
 			<h2>Contraseña o PIN:</h2>
-			<h2 class="contrasenia encript-data">{{contrasenia}}</h2>
+			<h2 class="contrasenia encript-data">{{cuenta.contrasenia}}</h2>
 		</div>
 		<div class="fila" id="options-buttons">
 			<button id="eliminar" (click)="eliminar()">
@@ -26,7 +26,7 @@
 			<button id="editar" (click)="editar()">
 				<img src="../../../assets/Editar-Icon.png" alt="">
 			</button>
-			<button id="desencriptar" (click)="procesarPin()">
+			<button id="desencriptar" (click)="desencriptar()">
 				<img src="../../../assets/Desencriptar-boton.png" alt="">
 			</button>
 		</div>
@@ -38,25 +38,25 @@
 
 		</div>
 		<div class="descripcion-cuenta infocuenta">
-			Cuenta de {{tipo}}
+			Cuenta de {{cuenta.tipo}}
 		</div>
 		<div class="usuario-correo infocuenta">
-			{{usuario}}
+			{{cuenta.usuario}}
 		</div>
 		<div class="contrasenia-PIN infocuenta">
-			{{contrasenia}}
+			{{cuenta.contrasenia}}
 		</div>
 		<div class="estado infocuenta">
 			<p class="candado"><i class="fas fa-lock"></i>Protegido</p>
 		</div>
 		<div class="accion infocuenta">
-			<button (click)="eliminar()" >
+			<button (click)="eliminar()">
 				<img src="../../../assets/Borrar-Icon.png" alt="">
 			</button>
-			<button (click) ="editar()">
+			<button (click)="editar()">
 				<img src="../../../assets/Editar-Icon.png" alt="">
 			</button>
-			<button (click)="procesarPin()">
+			<button (click)="desencriptar()">
 				<img src="../../../assets/EncripData.png" alt="">
 			</button>
 		</div>

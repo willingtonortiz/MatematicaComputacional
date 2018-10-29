@@ -19,8 +19,7 @@
 	</div>
 
 	<div class="cuentas">
-		<app-cuenta *ngFor="let cuenta of cuentas" [tipo]="cuenta.tipo" [usuario]="cuenta.usuario" [contrasenia]="cuenta.contrasenia"
-		 [id]="cuenta.id"></app-cuenta>
+		<app-cuenta *ngFor="let cuenta of cuentas" [cuenta]="cuenta"></app-cuenta>
 	</div>
 
 	<app-pin *ngIf="showPinModal"></app-pin>

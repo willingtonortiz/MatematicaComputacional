@@ -1,9 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { CEnigma } from '../../Clases/Enigma/CEnigma';
+// import { CEnigma } from '../../Clases/Enigma/CEnigma';
 import { Router } from '@angular/router';
 import { PinService } from '../../Servicios/pin.service';
 import { CuentasService } from '../../Servicios/cuentas.service';
 import { ArrCuentas } from 'src/app/Clases/Cuenta/ArrCuentas';
+import { Cuenta } from 'src/app/Clases/Cuenta/Cuenta';
 
 @Component({
 	selector: 'app-cuenta',
@@ -12,16 +13,11 @@ import { ArrCuentas } from 'src/app/Clases/Cuenta/ArrCuentas';
 })
 
 export class CuentaComponent implements OnInit {
-	// Id proporcionado por firebase
-	@Input('id') id: string;
-	@Input('tipo') tipo: string;
-	@Input('usuario') usuario: string;
-	@Input('contrasenia') contrasenia: string;
+	@Input('cuenta') cuenta: Cuenta;
 
 	private arrCuentas: ArrCuentas;
 	private activo: boolean;
 	public escondido: boolean = true;
-	private enigma: CEnigma;
 
 	constructor(
 		private router: Router,
@@ -29,14 +25,15 @@ export class CuentaComponent implements OnInit {
 	) {
 		this.arrCuentas = ArrCuentas.getInstancia();
 		this.activo = false;
-		this.enigma = CEnigma.getInstancia(0, 0, 0);
 	}
 
 	ngOnInit() {
-		if (this.id === PinService.actual) {
-			this.desencriptar();
-			this.activo = true;
-			this.escondido = false;
+		if (this.cuenta !== undefined && this.arrCuentas.getActual() !== undefined) {
+			if (this.cuenta.id === this.arrCuentas.getActual().id) {
+				this.escondido = false;
+				this.activo = true;
+				this.cuenta = this.arrCuentas.getActual();
+			}
 		}
 	}
 
@@ -44,29 +41,25 @@ export class CuentaComponent implements OnInit {
 		this.escondido = !this.escondido;
 	}
 
-	public desencriptar() {
-		this.usuario = this.enigma.cifrarTexto(this.usuario);
-		this.contrasenia = this.enigma.cifrarTexto(this.contrasenia);
-	}
-
 	public editar() {
 		PinService.tipo = "editar";
-		this.arrCuentas.setActual(this.id);
+		this.arrCuentas.setActual(this.cuenta.id);
 		this.router.navigate(['/cuentas', 'pin']);
 	}
 
 	public eliminar() {
-		this.cuentaservicio.deleteCuenta(this.id);
+		this.cuentaservicio.deleteCuenta(this.cuenta.id);
 	}
 
-	public procesarPin() {
+	public desencriptar() {
 		if (!this.activo) {
 			PinService.tipo = "desencriptar";
-			PinService.intento = this.id;
+			this.arrCuentas.setActual(this.cuenta.id);
 			this.router.navigate(['/cuentas', 'pin']);
 		}
 		else {
-			this.desencriptar();
+			this.arrCuentas.desencriptarActual();
+			this.cuenta = this.arrCuentas.getActual();
 			this.activo = false;
 		}
 	}

@@ -1,8 +1,10 @@
 import { Cuenta } from "./Cuenta";
+import { CEnigma } from "../Enigma/CEnigma";
 
 export class ArrCuentas {
     private cuentas: Array<Cuenta>;
     private static instancia: ArrCuentas = null;
+    private enigma: CEnigma;
 
     private actual: Cuenta;
 
@@ -35,5 +37,11 @@ export class ArrCuentas {
                 this.actual = item;
             }
         });
+    }
+
+    public desencriptarActual(): void {
+        this.enigma = CEnigma.getInstancia(0, 0, 0);
+        this.actual.usuario = this.enigma.cifrarTexto(this.actual.usuario);
+        this.actual.contrasenia = this.enigma.cifrarTexto(this.actual.contrasenia);
     }
 }

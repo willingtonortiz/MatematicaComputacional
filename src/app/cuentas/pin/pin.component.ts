@@ -3,6 +3,7 @@ import { Router } from "@angular/router";
 import { PinService } from "../../Servicios/pin.service";
 import { PersonaService } from "../../Servicios/persona.service";
 import { CRotorPosicion } from "src/app/Clases/Enigma/CRotorPosicion";
+import { ArrCuentas } from "src/app/Clases/Cuenta/ArrCuentas";
 import { CEnigma } from "src/app/Clases/Enigma/CEnigma";
 
 @Component({
@@ -26,11 +27,14 @@ export class PinComponent implements AfterViewInit {
 	@ViewChild("pinref6") nameElementRef6: ElementRef;
 	private nuevo: boolean = false;
 
+	private arrCuentas: ArrCuentas;
+
 	constructor(private router: Router) {
 		this.nuevo = PersonaService.nuevo;
 		if (PersonaService.nuevo) {
 			PersonaService.nuevo = false;
 		}
+		this.arrCuentas = ArrCuentas.getInstancia();
 	}
 
 	ngAfterViewInit(): void {
@@ -90,7 +94,8 @@ export class PinComponent implements AfterViewInit {
 						return;
 					};
 					case "desencriptar": {
-						PinService.actual = PinService.intento;
+						// PinService.actual = PinService.intento;
+						this.arrCuentas.desencriptarActual();
 					} break;
 				}
 			}
