@@ -1,0 +1,91 @@
+.contenedor{
+    width: 100%;
+    height: 100vh;
+    background-attachment: fixed;
+	background: radial-gradient(#272a35, #222130);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #eee;
+
+}
+.contenedor {
+    form{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-flow: column nowrap;
+        width: 100%;
+        height: 80vh;
+        margin: 0 auto;
+        color: #eee;
+        font-family: 'Open Sans', sans-serif;
+        .input-containers{
+            width: 100%;
+        }
+        .tipo-cuenta-cont,.usuario-cont,.contrasenia-cont{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: left;
+            position: relative;
+            margin: 20px 0;
+            & *{                
+                width: 200px;
+                
+            }
+            input{
+                background: rgba(255, 255, 255, .04);
+				border-radius: 6px;
+				border: none;
+				padding: 10px 20px;
+				color: #eee;
+				height: 35px;
+                &:focus{
+                    outline: none;
+                }
+            }
+
+        }
+        button{
+            border-radius: 6px;
+            border: none;
+            padding: 10px;
+            height: 40px;
+            width: 100px;
+            background: #5DF1B1;
+            color: #1E2024;
+            font-family: 'Open Sans', sans-serif;
+
+            font-weight: bold;
+        }
+
+    }
+}
+
+@media only screen and (min-width:320px) {
+    .contenedor{
+        form{
+            .tipo-cuenta-cont,.usuario-cont,.contrasenia-cont{
+                input,select{
+                    width: 200px;
+                }
+                label{
+                    width: 100px;
+                }
+                & * {
+                    margin: 0 10px;
+                }
+            }
+        }
+    }
+}
+@media only screen and (min-width:768px){
+    .contenedor{
+        form{
+            height: 60vh;
+        }
+    }
+}

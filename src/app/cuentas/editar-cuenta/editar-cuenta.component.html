@@ -1,21 +1,34 @@
 <div class="contenedor">
 	<form #frm="ngForm" (ngSubmit)="onSubmit(frm)">
 
-		<label>Tipo: {{ cuenta.tipo }}</label>
-		<select name="tipo" ngModel>
-			<option>Facebook</option>
-			<option>Twitter</option>
-			<option>Spotify</option>
-			<option>Youtube</option>
-			<option>UPC</option>
-			<option>Otros</option>
-		</select>
+		<h2>Editando Cuenta</h2>
+		<div class="input-containers">
 
-		<label>Usuario: {{ cuenta.usuario }}</label>
-		<input name="usuario" type="text" ngModel>
-
-		<label>Contraseña: {{ cuenta.contrasenia }}</label>
-		<input name="contrasenia" type="text" ngModel>
+			<div class="tipo-cuenta-cont">
+	
+				<label>Tipo:</label>
+				<select name="tipo" ngModel>
+					<option>Facebook</option>
+					<option>Twitter</option>
+					<option>Spotify</option>
+					<option>Youtube</option>
+					<option>UPC</option>
+					<option>Otros</option>
+				</select>
+			</div>
+	
+			<div class="usuario-cont">
+	
+				<label>Usuario:</label>
+				<input name="usuario" type="text" ngModel>
+			</div>
+	
+			<div class="contrasenia-cont">
+				<label>Contraseña: </label>
+				<input name="contrasenia" type="text" ngModel>
+	
+			</div>
+		</div>
 
 		<button>Editar</button>
 	</form>
