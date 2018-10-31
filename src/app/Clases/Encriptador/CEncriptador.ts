@@ -1,19 +1,28 @@
 import { AES } from '../AES/AES'
+import { Gronsfeld } from '../Gronsfeld/gronsfeld';
+
 export class CEncriptador {
-    constructor() {
+    constructor( ) {
 
     }
-    private encriptar(texto: string, contrasenia: string) {
+    public encriptar(contrasenia: string, pin: string) {
         //el nuevo caracter que agregue es ♥ 
-        let encripadorAES = new AES(texto, contrasenia, true);
-        texto=encripadorAES.textoModificado;
-        //seguir encriptando
-        return texto;
+        let encripadorAES = new AES(contrasenia, pin, true);
+        contrasenia = encripadorAES.textoModificado;
+        
+        let encriptadorGronsfeld = new Gronsfeld(pin);
+        contrasenia = encriptadorGronsfeld.encriptar_mensaje(contrasenia);
+
+        return contrasenia;
     }
-    private desencriptar(texto: string, contrasenia: string){
-        //desencriptación del texto por los otros algoritmos
-        let desencripadorAES = new AES(texto, contrasenia, false);
-        texto=desencripadorAES.textoModificado;
-        return texto;
+
+    public desencriptar(contrasenia: string, pin: string){
+        
+        let dEncriptadorGronsfeld = new Gronsfeld(pin);
+        contrasenia = dEncriptadorGronsfeld.desencriptar_mensaje(contrasenia);
+
+        let desencripadorAES = new AES(contrasenia, pin, false);
+        contrasenia = desencripadorAES.textoModificado;
+        return contrasenia;
     }
 }

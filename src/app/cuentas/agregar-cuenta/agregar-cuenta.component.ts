@@ -8,6 +8,10 @@ import { PersonaService } from "../../Servicios/persona.service";
 import { CEnigma } from "src/app/Clases/Enigma/CEnigma";
 import { Cuenta } from "src/app/Clases/Cuenta/Cuenta";
 
+
+import {PinService} from "../../Servicios/pin.service"
+import {CEncriptador} from "../../Clases/Encriptador/CEncriptador"
+
 @Component({
 	selector: "app-agregar-cuenta",
 	templateUrl: "./agregar-cuenta.component.html",
@@ -15,7 +19,8 @@ import { Cuenta } from "src/app/Clases/Cuenta/Cuenta";
 })
 
 export class AgregarCuentaComponent {
-	private enigma: CEnigma;
+	//private enigma: CEnigma;
+	private encriptador:CEncriptador;
 	public cuenta: Cuenta;
 
 	constructor(
@@ -23,7 +28,8 @@ export class AgregarCuentaComponent {
 		private cuentasServicio: CuentasService
 	) {
 		// Como enigma ya estaba creado, esta linea no afectará su funcionamiento
-		this.enigma = CEnigma.getInstancia(0, 0, 0);
+		//this.enigma = CEnigma.getInstancia(0, 0, 0);
+		this.encriptador=new CEncriptador();
 	}
 
 	onSubmit(form: NgForm) {
@@ -43,8 +49,11 @@ export class AgregarCuentaComponent {
 			this.cuenta.contrasenia = form.value.contrasenia;
 
 			// Se encripta la cuenta
-			this.cuenta.usuario = this.enigma.cifrarTexto(this.cuenta.usuario);
-			this.cuenta.contrasenia = this.enigma.cifrarTexto(this.cuenta.contrasenia);
+			/* this.cuenta.usuario = this.enigma.cifrarTexto(this.cuenta.usuario);
+			this.cuenta.contrasenia = this.enigma.cifrarTexto(this.cuenta.contrasenia);*/
+			this.cuenta.usuario=this.encriptador.encriptar(this.cuenta.usuario,PinService.pin);
+			this.cuenta.contrasenia=this.encriptador.encriptar(this.cuenta.contrasenia,PinService.pin);
+
 
 			// Se agrega la cuenta
 			this.cuentasServicio.addCuenta(this.cuenta.getSimple());

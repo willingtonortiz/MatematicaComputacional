@@ -1,10 +1,14 @@
 import { Cuenta } from "./Cuenta";
 import { CEnigma } from "../Enigma/CEnigma";
 
+import { CEncriptador } from "../Encriptador/CEncriptador"
+import { PinService } from "../../Servicios/pin.service"
+
 export class ArrCuentas {
     private cuentas: Array<Cuenta>;
     private static instancia: ArrCuentas = null;
     private enigma: CEnigma;
+    private encriptador:CEncriptador;
 
     private actual: Cuenta;
 
@@ -40,8 +44,8 @@ export class ArrCuentas {
     }
 
     public desencriptarActual(): void {
-        this.enigma = CEnigma.getInstancia(0, 0, 0);
-        this.actual.usuario = this.enigma.cifrarTexto(this.actual.usuario);
-        this.actual.contrasenia = this.enigma.cifrarTexto(this.actual.contrasenia);
+        this.encriptador=new CEncriptador();
+        this.actual.usuario=this.encriptador.desencriptar(this.actual.usuario,PinService.pin);
+        this.actual.contrasenia=this.encriptador.desencriptar(this.actual.contrasenia,PinService.pin);
     }
 }
