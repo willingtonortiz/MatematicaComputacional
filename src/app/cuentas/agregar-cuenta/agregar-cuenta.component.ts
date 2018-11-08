@@ -39,16 +39,16 @@ export class AgregarCuentaComponent {
 		else {
 			// Creando cuenta
 			// this.cuenta.id = PersonaService.uid;
-			this.cuenta = new Cuenta;
+			this.cuenta = new Cuenta();
 
 			this.cuenta.tipo = form.value.tipo;
 			this.cuenta.usuario = form.value.usuario;
 			this.cuenta.contrasenia = form.value.contrasenia;
 
 			// Se encripta la cuenta
+
 			this.cuenta.usuario=this.encriptador.encriptar(this.cuenta.usuario,PinService.pin);
 			this.cuenta.contrasenia=this.encriptador.encriptar(this.cuenta.contrasenia,PinService.pin);
-
 
 			// Se agrega la cuenta
 			this.cuentasServicio.addCuenta(this.cuenta.getSimple());

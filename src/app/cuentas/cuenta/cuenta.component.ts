@@ -58,7 +58,7 @@ export class CuentaComponent implements OnInit {
 			this.router.navigate(['/cuentas', 'pin']);
 		}
 		else {
-			this.arrCuentas.desencriptarActual();
+			this.arrCuentas.encriptarActual();
 			this.cuenta = this.arrCuentas.getActual();
 			this.activo = false;
 		}

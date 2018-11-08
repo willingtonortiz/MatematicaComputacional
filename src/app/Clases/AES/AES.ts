@@ -122,7 +122,7 @@ export class AES {
             texto = "";
             for (let j = 0; j < bloque[i].length; ++j)
                 texto += bloque[i][j].toString() + " ";
-            console.log(texto);
+            
         }
     }
     private imprimirTexto() {
@@ -139,7 +139,6 @@ export class AES {
                 }
             }
         }
-        console.log(texto);
         return texto;
     }
     private convertir(frase: string, posI: number, llave: boolean = false) {
@@ -217,7 +216,6 @@ export class AES {
                     }
                 }
                 else {
-                    //console.log("inverso" + k+ " "+i );
                     if (k + i > 3) {
                         temp2 = bloque[i][k + i - 4];
                         bloque[i][k + i - 4] = temp;
@@ -242,23 +240,19 @@ export class AES {
         for (let j = 0; j < 4; ++j) {
             let n = new Array(4);
             let n2 = new Array(4);
-            //n2[i]=(n[i]*2)(GF(2^8))
             var condicion;
             for (let i = 0; i < 4; i++) {
                 n[i] = bloque[i][j];
                 condicion = bloque[i][j] >> 7;
-                //console.log("h: "+h);
                 n2[i] = bloque[i][j] << 1;
-                if (condicion) {
-                    // n2[c]-=1<<8;  
+                if (condicion) { 
                     n2[i] = n2[i] ^ 283;
                 }
-                //console.log("pos: "+ c +" a: "+a[c]+" b: "+b[c]);
             }
-            bloque[0][j] = n2[0] ^ n[3] ^ n[2] ^ n2[1] ^ n[1]; / * 2 * a0 + a3 + a2 + 3 * a1 * /
-            bloque[1][j] = n2[1] ^ n[0] ^ n[3] ^ n2[2] ^ n[2]; / * 2 * a1 + a0 + a3 + 3 * a2 * /
-            bloque[2][j] = n2[2] ^ n[1] ^ n[0] ^ n2[3] ^ n[3]; / * 2 * a2 + a1 + a0 + 3 * a3 * /
-            bloque[3][j] = n2[3] ^ n[2] ^ n[1] ^ n2[0] ^ n[0]; / * 2 * a3 + a2 + a1 + 3 * a0 * /
+            bloque[0][j] = n2[0] ^ n[3] ^ n[2] ^ n2[1] ^ n[1]; 
+            bloque[1][j] = n2[1] ^ n[0] ^ n[3] ^ n2[2] ^ n[2]; 
+            bloque[2][j] = n2[2] ^ n[1] ^ n[0] ^ n2[3] ^ n[3]; 
+            bloque[3][j] = n2[3] ^ n[2] ^ n[1] ^ n2[0] ^ n[0]; 
         }
     }
     private InvMixColumns(bloque: Array<Array<number>>) {
