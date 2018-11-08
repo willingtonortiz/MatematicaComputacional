@@ -19,7 +19,6 @@ import {CEncriptador} from "../../Clases/Encriptador/CEncriptador"
 })
 
 export class AgregarCuentaComponent {
-	//private enigma: CEnigma;
 	private encriptador:CEncriptador;
 	public cuenta: Cuenta;
 
@@ -27,8 +26,6 @@ export class AgregarCuentaComponent {
 		private router: Router,
 		private cuentasServicio: CuentasService
 	) {
-		// Como enigma ya estaba creado, esta linea no afectará su funcionamiento
-		//this.enigma = CEnigma.getInstancia(0, 0, 0);
 		this.encriptador=new CEncriptador();
 	}
 
@@ -49,8 +46,6 @@ export class AgregarCuentaComponent {
 			this.cuenta.contrasenia = form.value.contrasenia;
 
 			// Se encripta la cuenta
-			/* this.cuenta.usuario = this.enigma.cifrarTexto(this.cuenta.usuario);
-			this.cuenta.contrasenia = this.enigma.cifrarTexto(this.cuenta.contrasenia);*/
 			this.cuenta.usuario=this.encriptador.encriptar(this.cuenta.usuario,PinService.pin);
 			this.cuenta.contrasenia=this.encriptador.encriptar(this.cuenta.contrasenia,PinService.pin);
 
